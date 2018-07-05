@@ -19,6 +19,8 @@
     <jpa:repositories base-package="fr.gtm.projetv3.dao" />
 
 	<bean id="clientService" class="fr.gtm.projetv3.service.ClientService"/>
+	<bean id="carteBleueService" class="fr.gtm.projetv3.service.CarteBleueService"/>
+	<bean id="compteService" class="fr.gtm.projetv3.service.CompteService"/>
 	
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
