@@ -1,6 +1,7 @@
 package fr.gtm.projetv3.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Client {
 
@@ -10,9 +11,16 @@ public class Client {
 	private String penom;
 	private LocalDate dateNaissance;
 	private Adresse adresse;
-	private CompteCourant compteCourant;
-	private CompteEpargne compteEpargne;
+	private List<Compte> comptes;
 	
+	/**
+	 * 
+	 */
+	public Client() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * @param id
 	 * @param numCl
@@ -20,11 +28,10 @@ public class Client {
 	 * @param penom
 	 * @param dateNaissance
 	 * @param adresse
-	 * @param compteCourant
-	 * @param compteEpargne
+	 * @param comptes
 	 */
 	public Client(Integer id, Long numCl, String nom, String penom, LocalDate dateNaissance, Adresse adresse,
-			CompteCourant compteCourant, CompteEpargne compteEpargne) {
+			List<Compte> comptes) {
 		super();
 		this.id = id;
 		this.numCl = numCl;
@@ -32,16 +39,7 @@ public class Client {
 		this.penom = penom;
 		this.dateNaissance = dateNaissance;
 		this.adresse = adresse;
-		this.compteCourant = compteCourant;
-		this.compteEpargne = compteEpargne;
-	}
-
-	/**
-	 * 
-	 */
-	public Client() {
-		super();
-		// TODO Auto-generated constructor stub
+		this.comptes = comptes;
 	}
 
 	public Integer getId() {
@@ -92,26 +90,17 @@ public class Client {
 		this.adresse = adresse;
 	}
 
-	public CompteCourant getCompteCourant() {
-		return compteCourant;
+	public List<Compte> getComptes() {
+		return comptes;
 	}
 
-	public void setCompteCourant(CompteCourant compteCourant) {
-		this.compteCourant = compteCourant;
-	}
-
-	public CompteEpargne getCompteEpargne() {
-		return compteEpargne;
-	}
-
-	public void setCompteEpargne(CompteEpargne compteEpargne) {
-		this.compteEpargne = compteEpargne;
+	public void setComptes(List<Compte> comptes) {
+		this.comptes = comptes;
 	}
 
 	@Override
 	public String toString() {
 		return "Client [id=" + id + ", numCl=" + numCl + ", nom=" + nom + ", penom=" + penom + ", dateNaissance="
-				+ dateNaissance + ", adresse=" + adresse + ", compteCourant=" + compteCourant + ", compteEpargne="
-				+ compteEpargne + "]";
+				+ dateNaissance + ", adresse=" + adresse + ", comptes=" + comptes + "]";
 	}
 }
