@@ -5,17 +5,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import fr.gtm.projetv3.dao.CompteRepository;
 import fr.gtm.projetv3.model.Compte;
 
+/**
+ * 
+ * @author Azeri, Ussunet, Aitelhara
+ *
+ */
+
 public class CompteService {
 
 	@Autowired
 	CompteRepository repo;
 	
+	
+	/**
+	 * 
+	 * @param idCompte
+	 * @return
+	 */
 	// Trouver un compte 
 	public Compte findById(Integer idCompte) {
 		return this.repo.getOne(idCompte);		
 	}
 	
-	// Débit compte pour retraits ou virements.
+	/**
+	 * 
+	 * @param mt
+	 * @param idCompte
+	 * @return
+	 */
+	// Dï¿½bit compte pour retraits ou virements.
 	public Compte debitCompte(Double mt, Integer idCompte) {
 		Double solde = this.findById(idCompte).getSolde();
 		if(mt<solde) {
@@ -26,7 +44,14 @@ public class CompteService {
 		return this.repo.saveSolde(solde, idCompte);
 	}
 	
-	// Crédit compte pour virements.
+	
+	/**
+	 * 
+	 * @param mt
+	 * @param idCompte
+	 * @return
+	 */
+	// Crï¿½dit compte pour virements.
 	public Compte creditCompte(Double mt, Integer idCompte) {
 		Double solde = this.findById(idCompte).getSolde();
 		solde+=mt;

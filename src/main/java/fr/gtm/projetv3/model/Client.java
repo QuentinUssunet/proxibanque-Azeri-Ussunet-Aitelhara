@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 /**
  * 
- * @author Azeri, Qussunet,Aitelhara
+ * @author Azeri, Ussunet,Aitelhara
  * 
  * Cette Classe regroupe tous les élements nécessaires  qui constitue un Client,
  * un Identifiant, Nom, Prénom, NumeroClient,Date de naissance, Adresse, Liste des Comptes .

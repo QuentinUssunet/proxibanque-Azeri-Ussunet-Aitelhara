@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 /**
  * 
- * @author Azeri, Qussunet,Aitelhara
+ * @author Azeri, Ussunet,Aitelhara
  * 
  * Cette Classe regroupe tous les élements nécessaires  qui constitue uune carte bancaire,
  * un Identifiant, Numero de carte, Date d'expiration, Type de carte .

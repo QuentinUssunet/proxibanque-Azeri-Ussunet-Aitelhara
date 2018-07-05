@@ -8,7 +8,7 @@ import fr.gtm.projetv3.model.CarteBleue;
 
 /**
  * 
- * @author Azeri, Qussunet,Aitelhara
+ * @author Azeri,Ussunet,Aitelhara
  * 
  *         Cette Interface qui communique avec la base de données et qui permet
  *         de remonter les infos de la carte bancaire du client sotcker en base

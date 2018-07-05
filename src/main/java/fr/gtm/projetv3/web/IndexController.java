@@ -19,6 +19,12 @@ import fr.gtm.projetv3.service.CarteBleueService;
 import fr.gtm.projetv3.service.ClientService;
 import fr.gtm.projetv3.service.CompteService;
 
+/**
+ * 
+ * @author Azeri, Ussunet, Aitelhara
+ *
+ */
+
 @Controller
 public class IndexController {
 	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
@@ -32,12 +38,21 @@ public class IndexController {
 	@Autowired
 	CarteBleueService carteBleueService;
 	
+	/**
+	 * 
+	 * @return
+	 */
 	@RequestMapping("/index")
 	public ModelAndView index() {
 		final ModelAndView mav = new ModelAndView("index");
 		return mav;
 	}
 	
+	/**
+	 * 
+	 * @param nomprenom
+	 * @return
+	 */
 	@PostMapping("/index")
 	public String authentification(@RequestParam ("nom-prenom")String nomprenom) {
 		LOGGER.info(nomprenom);
@@ -57,12 +72,20 @@ public class IndexController {
 		
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	@GetMapping
 	public ModelAndView date() {
 		final ModelAndView mav = new ModelAndView("authen");
 		return mav;
 	}
 	
+	/**
+	 * @param dateNaissance
+	 * @return
+	 */
 	@PostMapping("/authen")
 	public ModelAndView date(@RequestParam ("dateNaissance") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate dateNaissance) {
 		
