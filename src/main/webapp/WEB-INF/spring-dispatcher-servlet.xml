@@ -13,7 +13,12 @@
         http://www.springframework.org/schema/data/jpa
         http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-	
+	<mvc:annotation-driven/>
+       
+    <context:component-scan base-package="fr.gtm.projetv3.service, fr.gtm.projetv3.web" />
+    <jpa:repositories base-package="fr.gtm.projetv3.dao" />
+
+	<bean id="clientService" class="fr.gtm.projetv3.service.ClientService"/>
 	
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
