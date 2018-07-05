@@ -14,13 +14,16 @@ public class ClientService {
 	@Autowired
 	ClientRepository repo;
 		
-	
+	// Affichage des comptes du client
 	public List<Compte> listComptes(Integer idClient){
 		List<Compte> comptes = new ArrayList<Compte>();		
 		return comptes;		
 	}
 	
+	// Authentification du client par son nom
 	public Client findByName(String nom) {
 		return this.repo.getByName(nom);
 	}
+	
+	
 }
