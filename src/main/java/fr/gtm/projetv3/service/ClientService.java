@@ -47,6 +47,12 @@ public class ClientService {
 		Client client = object.compare(nom, dateNaissance);
 		return client;
 	}
+
+	public Integer getId(LocalDate dateNaissance) {
+		Results object = getResult.get(id);
+		Integer idClient = object.getIdClient(dateNaissance);
+		return idClient;
+	}
 	
 
 		

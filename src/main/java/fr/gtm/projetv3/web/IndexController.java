@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.gtm.projetv3.model.Client;
+import fr.gtm.projetv3.model.Compte;
 import fr.gtm.projetv3.service.CarteBleueService;
 import fr.gtm.projetv3.service.ClientService;
 import fr.gtm.projetv3.service.CompteService;
@@ -66,15 +67,17 @@ public class IndexController {
 	public ModelAndView date(@RequestParam ("dateNaissance") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate dateNaissance) {
 		
 		Client result = this.clientService.checkDate(dateNaissance);
+		Integer idClient = this.clientService.getId(dateNaissance);
 		ModelAndView renvoi = null;
 		if(result!=null) {
+			List<Compte> listComtes = this.clientService.listComptes(idClient);
 			final ModelAndView mav = new ModelAndView("accueil");
+			mav.addObject(listComtes);
 			renvoi = mav;
 		} else {
 			// TODO Mauvaise date de naissance merci de recommencer l'authentification.
 			// TODO redirect /index
-		}
-		
+		}		
 	return renvoi;
 	}
 	
