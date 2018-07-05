@@ -20,12 +20,11 @@
 
 			<ul class="nav navbar-left">
 
-				<li role="presentation"><a href="clientsoperations.jsp"><span
-						class="glyphicon glyphicon-home" aria-hidden="true"></span>
-						Accueil ProxyBanque</a></li>
+				<li role="presentation"><a href="index.jsp"><span
+						class="glyphicon glyphicon-off" aria-hidden="true"></span>
+						Se Déconnecter</a></li>
 
 			</ul>
-
 		</div>
 
 		<input path="id" type="hidden" name="conseillerId"
