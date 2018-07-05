@@ -9,7 +9,7 @@
 		</layout>
 	</appender>
 	
-	<logger level="debug" name="fr.gtm.proxybankV3" additivity="false">
+	<logger level="debug" name="fr.gtm.projetv3" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
