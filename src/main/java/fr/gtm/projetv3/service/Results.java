@@ -17,7 +17,7 @@ public class Results {
 	
 
 	
-	// Constructeur par défault
+	// Constructeur par dï¿½fault
 	
 	public Results() {		
 	}
@@ -44,5 +44,4 @@ public class Results {
 		this.prenom = prenom;
 		return this.repo.getAllByFirstName(prenom);
 	}
-	
 }
