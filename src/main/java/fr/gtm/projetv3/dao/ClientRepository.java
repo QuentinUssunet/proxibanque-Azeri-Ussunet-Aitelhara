@@ -10,4 +10,7 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 	@Query(value = "SELECT * FROM client WHERE nom = ?1", nativeQuery= true)
 	Client getByName(String nom);
 
+	@Query(value = "SELECT * FROM client WHERE prenom = ?1", nativeQuery= true)
+	Client getByFirstName(String prenom);
+
 }
