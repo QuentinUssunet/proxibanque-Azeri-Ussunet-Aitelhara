@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Client {
 
-	private Integer idClient;
+	private Integer id;
 	private Long numCl;
 	private String nom;
 	private String prenom;
@@ -13,9 +13,6 @@ public class Client {
 	private Adresse adresse;
 	private List<Compte> comptes;
 	
-	
-
-
 	/**
 	 * 
 	 */
@@ -24,12 +21,8 @@ public class Client {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Integer getIdClient() {
-		return idClient;
-	}
-
 	/**
-	 * @param idClient
+	 * @param id
 	 * @param numCl
 	 * @param nom
 	 * @param prenom
@@ -37,10 +30,10 @@ public class Client {
 	 * @param adresse
 	 * @param comptes
 	 */
-	public Client(Integer idClient, Long numCl, String nom, String prenom, LocalDate dateNaissance, Adresse adresse,
+	public Client(Integer id, Long numCl, String nom, String prenom, LocalDate dateNaissance, Adresse adresse,
 			List<Compte> comptes) {
 		super();
-		this.idClient = idClient;
+		this.id = id;
 		this.numCl = numCl;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -49,8 +42,12 @@ public class Client {
 		this.comptes = comptes;
 	}
 
-	public void setIdClient(Integer idClient) {
-		this.idClient = idClient;
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Long getNumCl() {
@@ -103,9 +100,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "Client [idClient=" + idClient + ", numCl=" + numCl + ", nom=" + nom + ", prenom=" + prenom
-				+ ", dateNaissance=" + dateNaissance + ", adresse=" + adresse + ", comptes=" + comptes + "]";
+		return "Client [id=" + id + ", numCl=" + numCl + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance="
+				+ dateNaissance + ", adresse=" + adresse + ", comptes=" + comptes + "]";
 	}
-
-	
 }

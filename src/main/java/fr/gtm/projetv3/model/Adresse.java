@@ -2,36 +2,33 @@ package fr.gtm.projetv3.model;
 
 public class Adresse {
 
-	private Integer adresseId;
+	private Integer id;
 	private Integer codePostal;
 	private String ville;
 	private String nomRue;
 	private String numRue;
 	private String pays;
 	private String adresseOpt;
-	private Client client;
 	
 	/**
-	 * @param adresseId
+	 * @param id
 	 * @param codePostal
 	 * @param ville
 	 * @param nomRue
 	 * @param numRue
 	 * @param pays
 	 * @param adresseOpt
-	 * @param client
 	 */
-	public Adresse(Integer adresseId, Integer codePostal, String ville, String nomRue, String numRue, String pays,
-			String adresseOpt, Client client) {
+	public Adresse(Integer id, Integer codePostal, String ville, String nomRue, String numRue, String pays,
+			String adresseOpt) {
 		super();
-		this.adresseId = adresseId;
+		this.id = id;
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.nomRue = nomRue;
 		this.numRue = numRue;
 		this.pays = pays;
 		this.adresseOpt = adresseOpt;
-		this.client = client;
 	}
 
 	/**
@@ -42,12 +39,12 @@ public class Adresse {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Integer getAdresseId() {
-		return adresseId;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setAdresseId(Integer adresseId) {
-		this.adresseId = adresseId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Integer getCodePostal() {
@@ -98,18 +95,9 @@ public class Adresse {
 		this.adresseOpt = adresseOpt;
 	}
 
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
 	@Override
 	public String toString() {
-		return "Adresse [adresseId=" + adresseId + ", codePostal=" + codePostal + ", ville=" + ville + ", nomRue="
-				+ nomRue + ", numRue=" + numRue + ", pays=" + pays + ", adresseOpt=" + adresseOpt + ", client=" + client
-				+ "]";
+		return "Adresse [id=" + id + ", codePostal=" + codePostal + ", ville=" + ville + ", nomRue=" + nomRue
+				+ ", numRue=" + numRue + ", pays=" + pays + ", adresseOpt=" + adresseOpt + "]";
 	}
 }
