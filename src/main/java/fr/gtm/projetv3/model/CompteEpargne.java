@@ -9,29 +9,33 @@ public class CompteEpargne {
 	private String Libelle;
 	private LocalDate dateOuverture;
 	private Double solde;
+	private Chequier chequier;
 	
-	/**
-	 * @param id
-	 * @param numeroCompte
-	 * @param libelle
-	 * @param dateOuverture
-	 * @param solde
-	 */
-	public CompteEpargne(Integer id, Long numeroCompte, String libelle, LocalDate dateOuverture, Double solde) {
-		super();
-		this.id = id;
-		this.numeroCompte = numeroCompte;
-		Libelle = libelle;
-		this.dateOuverture = dateOuverture;
-		this.solde = solde;
-	}
-
 	/**
 	 * 
 	 */
 	public CompteEpargne() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param id
+	 * @param numeroCompte
+	 * @param libelle
+	 * @param dateOuverture
+	 * @param solde
+	 * @param chequier
+	 */
+	public CompteEpargne(Integer id, Long numeroCompte, String libelle, LocalDate dateOuverture, Double solde,
+			Chequier chequier) {
+		super();
+		this.id = id;
+		this.numeroCompte = numeroCompte;
+		Libelle = libelle;
+		this.dateOuverture = dateOuverture;
+		this.solde = solde;
+		this.chequier = chequier;
 	}
 
 	public Integer getId() {
@@ -74,9 +78,17 @@ public class CompteEpargne {
 		this.solde = solde;
 	}
 
+	public Chequier getChequier() {
+		return chequier;
+	}
+
+	public void setChequier(Chequier chequier) {
+		this.chequier = chequier;
+	}
+
 	@Override
 	public String toString() {
 		return "CompteEpargne [id=" + id + ", numeroCompte=" + numeroCompte + ", Libelle=" + Libelle
-				+ ", dateOuverture=" + dateOuverture + ", solde=" + solde + "]";
+				+ ", dateOuverture=" + dateOuverture + ", solde=" + solde + ", chequier=" + chequier + "]";
 	}
 }
