@@ -1,4 +1,9 @@
-package fr.gtm.projetv3.model;
+package fr.gtm.projetv3.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import fr.gtm.projetv3.dao.ClientRepository;
+import fr.gtm.projetv3.model.Client;
 
 public class Results {
 
@@ -6,6 +11,11 @@ public class Results {
 	private String nom;
 	private String prenom;
 	
+	@Autowired
+	ClientRepository repo;
+	
+	
+
 	
 	// Constructeur par défault
 	
@@ -23,14 +33,16 @@ public class Results {
 	public String getNom() {
 		return nom;
 	}
-	public void setNom(String nom) {
+	public Client setNom(String nom) {
 		this.nom = nom;
+		return this.repo.getAllByName(nom);
 	}
 	public String getPrenom() {
 		return prenom;
 	}
-	public void setPrenom(String prenom) {
+	public Client setPrenom(String prenom) {
 		this.prenom = prenom;
+		return this.repo.getAllByFirstName(prenom);
 	}
 	
 }
