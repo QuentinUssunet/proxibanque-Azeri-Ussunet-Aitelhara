@@ -1,7 +1,10 @@
 package fr.gtm.projetv3.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +15,15 @@ import fr.gtm.projetv3.model.Compte;
 
 public class ClientService {
 
+	
 	@Autowired
 	ClientRepository repo;
 	
 	@Autowired
 	ObjectFactory<Results> res;
+	
+	Integer id;
+	Map<Integer,Results> getResult = new HashMap<Integer,Results>(); 
 		
 	// Affichage des comptes du client
 	public List<Compte> listComptes(Integer idClient){
@@ -25,23 +32,28 @@ public class ClientService {
 	}
 	
 	// Authentification du client par son nom
-	public Client findByName(String nom) {
-		return this.res.getObject().setNom(nom);
+	public List<Client> findByEntry(String nom, String prenom) {
+		Results object = this.res.getObject();
+		object.setId(id);
+		getResult.put(id, object);
+		List<Client> c1 = object.searchByName(nom);
+		return c1;		
 	}
 	
-	// Authentification du client par son prenom
-	public Client findByFirstName(String prenom) {		
-		return this.res.getObject().setPrenom(prenom);
+	// Check dateNaissance + nom/prenom
+	public Client checkDate(LocalDate dateNaissance) {
+		Results object = getResult.get(id);
+		String nom = object.getNom();		
+		Client client = object.compare(nom, dateNaissance);
+		return client;
 	}
 	
-	// Methode de comparaison client par nom, client par prenom
-	public Client compare(Client c1,Client c2) {
-		Client result = null;
-		if(c1.equals(c2)) {
-			result = c1;
-		} else {
-			// TODO message client combinaison nom+prenom inexistant veuillez ressaisir
-		}
-		return result;
-	}
+
+		
+		
+		
+		
+		
+		
+		
 }
