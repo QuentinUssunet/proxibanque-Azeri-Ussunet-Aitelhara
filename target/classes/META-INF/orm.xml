@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 
 <entity-mappings version="2.0"
@@ -118,4 +119,116 @@
 		</attributes>
 	</entity>
 	
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entity-mappings version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+	
+	<!-- ********************** ENTITE CLIENT *********************** -->
+	<entity class="fr.gtm.projetv3.model.Client">
+		<table name="client" />
+		<attributes>
+
+			<id name="idClient">
+				<generated-value strategy="IDENTITY" />
+			</id>
+	
+			<basic name="numCl" />
+			<basic name="nom" />
+			<basic name="prenom" />
+			<basic name="dateNaissance" />
+			
+			<one-to-many name="comptes">
+				<join-column name="idCompteCol" referenced-column-name="idCompte"/>
+			</one-to-many>
+			
+			
+			<one-to-one name="adresse">
+				<join-column name="adresseCol" referenced-column-name="adresseId" />
+			</one-to-one>
+			
+		</attributes>
+	</entity>
+	
+	<!-- ******************* ENTITE ADRESSE ******************* -->
+	<entity class="fr.gtm.projetv3.model.Adresse">
+		<table name="adresse" />
+		<attributes>
+
+			<id name="adresseId">
+				<generated-value strategy="IDENTITY" />
+			</id>
+	
+			<basic name="codePostal" />
+			<basic name="ville" />
+			<basic name="nomRue" />
+			<basic name="numRue" />
+			<basic name="pays" />
+			<basic name="adresseOpt" />
+			<basic name="client" />
+			
+		</attributes>
+	</entity>
+	
+	<!-- ******************* ENTITE COMPTE ******************* -->
+	<entity class="fr.gtm.projetv3.model.Compte">
+		<table name="compte" />
+		<attributes>
+
+			<id name="idCompte">
+				<generated-value strategy="IDENTITY" />
+			</id>
+
+			<basic name="numCC" />
+			<basic name="libeller" />
+			<basic name="dateOuverture" />
+			<basic name="solde" />
+			<basic name="typeCompte" />
+
+			<one-to-one name="cb">
+				<join-column name="carteBleueCol" referenced-column-name="idCb" />
+			</one-to-one>
+		
+			<one-to-one name="cheque">
+				<join-column name="idCheque" referenced-column-name="idChequier" />
+			</one-to-one>
+			
+		</attributes>
+	</entity>
+	
+	<!-- ********************** ENTITE CARTE BLEUE *********************** -->
+	<entity class="fr.gtm.projetv3.model.CarteBleue">
+		<table name="cartebleue" />
+		<attributes>
+
+			<id name="idCb">
+				<generated-value strategy="IDENTITY" />
+			</id>
+
+			<basic name="numeroCarte" />
+			<basic name="dateExpiration" />
+			<basic name="type" />
+
+		</attributes>
+	</entity>
+	
+	<!-- ********************** ENTITE CHEQUE *********************** -->
+	<entity class="fr.gtm.projetv3.model.Chequier">
+		<table name="chequier" />
+		<attributes>
+
+			<id name="idChequier">
+				<generated-value strategy="IDENTITY" />
+			</id>
+
+			<basic name="dateEnvoi" />
+			<basic name="dateReception" />
+
+		</attributes>
+	</entity>
+	
+>>>>>>> 0f699a5efe387e2aea9c70eebd792245937f6ffa
 </entity-mappings>

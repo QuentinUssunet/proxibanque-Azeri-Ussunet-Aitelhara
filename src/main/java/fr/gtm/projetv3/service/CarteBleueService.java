@@ -11,7 +11,6 @@ public class CarteBleueService {
 	CarteBleueRepository repo;
 	
 	public CarteBleue create(CarteBleue carteBleue) {
-		//TODO Condition créer ssi le compte ne dispose pas déjà d'une carte
 		return this.repo.save(carteBleue);		
 	}
 }
