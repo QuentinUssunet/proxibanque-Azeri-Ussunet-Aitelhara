@@ -4,18 +4,21 @@ import java.time.LocalDate;
 
 public class CarteBleue {
 
-	private Integer id;
+	private Integer idCb;
+	private Long numeroCarte;
 	private LocalDate dateExpiration;
 	private Boolean type;
-	
+
 	/**
-	 * @param id
+	 * @param idCb
+	 * @param nueroCarte
 	 * @param dateExpiration
 	 * @param type
 	 */
-	public CarteBleue(Integer id, LocalDate dateExpiration, Boolean type) {
+	public CarteBleue(Integer idCb, Long nueroCarte, LocalDate dateExpiration, Boolean type) {
 		super();
-		this.id = id;
+		this.idCb = idCb;
+		this.numeroCarte = nueroCarte;
 		this.dateExpiration = dateExpiration;
 		this.type = type;
 	}
@@ -28,12 +31,20 @@ public class CarteBleue {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getIdCb() {
+		return idCb;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdCb(Integer idCb) {
+		this.idCb = idCb;
+	}
+
+	public Long getNueroCarte() {
+		return numeroCarte;
+	}
+
+	public void setNueroCarte(Long nueroCarte) {
+		this.numeroCarte = nueroCarte;
 	}
 
 	public LocalDate getDateExpiration() {
@@ -54,6 +65,7 @@ public class CarteBleue {
 
 	@Override
 	public String toString() {
-		return "CarteBleue [id=" + id + ", dateExpiration=" + dateExpiration + ", type=" + type + "]";
+		return "CarteBleue [idCb=" + idCb + ", nueroCarte=" + numeroCarte + ", dateExpiration=" + dateExpiration
+				+ ", type=" + type + "]";
 	}
 }

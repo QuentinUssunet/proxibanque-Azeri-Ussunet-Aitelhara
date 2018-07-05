@@ -2,7 +2,7 @@ package fr.gtm.projetv3.model;
 
 public class Adresse {
 
-	private Integer id;
+	private Integer adresseId;
 	private Integer codePostal;
 	private String ville;
 	private String nomRue;
@@ -12,15 +12,7 @@ public class Adresse {
 	private Client client;
 	
 	/**
-	 * 
-	 */
-	public Adresse() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	/**
-	 * @param id
+	 * @param adresseId
 	 * @param codePostal
 	 * @param ville
 	 * @param nomRue
@@ -29,10 +21,10 @@ public class Adresse {
 	 * @param adresseOpt
 	 * @param client
 	 */
-	public Adresse(Integer id, Integer codePostal, String ville, String nomRue, String numRue, String pays,
+	public Adresse(Integer adresseId, Integer codePostal, String ville, String nomRue, String numRue, String pays,
 			String adresseOpt, Client client) {
 		super();
-		this.id = id;
+		this.adresseId = adresseId;
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.nomRue = nomRue;
@@ -42,12 +34,20 @@ public class Adresse {
 		this.client = client;
 	}
 
-	public Integer getId() {
-		return id;
+	/**
+	 * 
+	 */
+	public Adresse() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public Integer getAdresseId() {
+		return adresseId;
+	}
+
+	public void setAdresseId(Integer adresseId) {
+		this.adresseId = adresseId;
 	}
 
 	public Integer getCodePostal() {
@@ -108,7 +108,8 @@ public class Adresse {
 
 	@Override
 	public String toString() {
-		return "Adresse [id=" + id + ", codePostal=" + codePostal + ", ville=" + ville + ", nomRue=" + nomRue
-				+ ", numRue=" + numRue + ", pays=" + pays + ", adresseOpt=" + adresseOpt + ", client=" + client + "]";
+		return "Adresse [adresseId=" + adresseId + ", codePostal=" + codePostal + ", ville=" + ville + ", nomRue="
+				+ nomRue + ", numRue=" + numRue + ", pays=" + pays + ", adresseOpt=" + adresseOpt + ", client=" + client
+				+ "]";
 	}
 }

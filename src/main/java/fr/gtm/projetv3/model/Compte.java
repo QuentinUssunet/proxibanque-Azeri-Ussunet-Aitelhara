@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Compte {
 	
-	private Integer id;
+	private Integer idCompte;
 	private Long numCC;
 	private String libeller;
 	private LocalDate dateOuverture;
@@ -14,7 +14,7 @@ public class Compte {
 	private String typeCompte;
 	
 	/**
-	 * @param id
+	 * @param idCompte
 	 * @param numCC
 	 * @param libeller
 	 * @param dateOuverture
@@ -23,10 +23,10 @@ public class Compte {
 	 * @param solde
 	 * @param typeCompte
 	 */
-	public Compte(Integer id, Long numCC, String libeller, LocalDate dateOuverture, CarteBleue cb, Chequier cheque,
-			Double solde, String typeCompte) {
+	public Compte(Integer idCompte, Long numCC, String libeller, LocalDate dateOuverture, CarteBleue cb,
+			Chequier cheque, Double solde, String typeCompte) {
 		super();
-		this.id = id;
+		this.idCompte = idCompte;
 		this.numCC = numCC;
 		this.libeller = libeller;
 		this.dateOuverture = dateOuverture;
@@ -44,12 +44,12 @@ public class Compte {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getIdCompte() {
+		return idCompte;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdCompte(Integer idCompte) {
+		this.idCompte = idCompte;
 	}
 
 	public Long getNumCC() {
@@ -110,7 +110,8 @@ public class Compte {
 
 	@Override
 	public String toString() {
-		return "Compte [id=" + id + ", numCC=" + numCC + ", libeller=" + libeller + ", dateOuverture=" + dateOuverture
-				+ ", cb=" + cb + ", cheque=" + cheque + ", solde=" + solde + ", typeCompte=" + typeCompte + "]";
-	}
+		return "Compte [idCompte=" + idCompte + ", numCC=" + numCC + ", libeller=" + libeller + ", dateOuverture="
+				+ dateOuverture + ", cb=" + cb + ", cheque=" + cheque + ", solde=" + solde + ", typeCompte="
+				+ typeCompte + "]";
+	}	
 }
