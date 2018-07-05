@@ -24,11 +24,11 @@
 			gestion de Compte</p>
 		<br>
 
-		<form method="post" class="form-inline">
+		<form  method="post" class="form-inline">
 			<label for="dateNaissance">Date de Naissance </label>
 			<div class="form-group">
 				<input type="date" class="form-control" id="dateNaissance"
-					name="dateNaisance">
+					name="dateNaissance">
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-success btn-lg">Valider</button>

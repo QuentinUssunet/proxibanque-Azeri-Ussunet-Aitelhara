@@ -23,15 +23,10 @@
 		<br>
 
 		<form method="post" class="form-inline">
-			<label for="nom">Nom </label>
+			<label for="nom">Nom et/ou Prénom </label>
 			<div class="form-group">
-				<input type="text" class="form-control" id="nom" name="nom"
-					placeholder="Nom">
-			</div>
-			<label for="prenom">Prénom </label>
-			<div class="form-group">
-				<input type="text" class="form-control" id="login" name="login"
-					placeholder="Prénom">
+				<input type="text" class="form-control" id="nom-prenom" name="nom-prenom"
+					placeholder="Nom / Prénom">
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-success btn-lg">Espace
