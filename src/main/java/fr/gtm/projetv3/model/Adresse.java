@@ -9,7 +9,6 @@ public class Adresse {
 	private String numRue;
 	private String pays;
 	private String adresseOpt;
-	private Client client;
 	
 	/**
 	 * @param adresseId
@@ -22,7 +21,7 @@ public class Adresse {
 	 * @param client
 	 */
 	public Adresse(Integer adresseId, Integer codePostal, String ville, String nomRue, String numRue, String pays,
-			String adresseOpt, Client client) {
+			String adresseOpt) {
 		super();
 		this.adresseId = adresseId;
 		this.codePostal = codePostal;
@@ -31,7 +30,6 @@ public class Adresse {
 		this.numRue = numRue;
 		this.pays = pays;
 		this.adresseOpt = adresseOpt;
-		this.client = client;
 	}
 
 	/**
@@ -98,18 +96,9 @@ public class Adresse {
 		this.adresseOpt = adresseOpt;
 	}
 
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
 	@Override
 	public String toString() {
 		return "Adresse [adresseId=" + adresseId + ", codePostal=" + codePostal + ", ville=" + ville + ", nomRue="
-				+ nomRue + ", numRue=" + numRue + ", pays=" + pays + ", adresseOpt=" + adresseOpt + ", client=" + client
-				+ "]";
+				+ nomRue + ", numRue=" + numRue + ", pays=" + pays + ", adresseOpt=" + adresseOpt + "]";
 	}
 }

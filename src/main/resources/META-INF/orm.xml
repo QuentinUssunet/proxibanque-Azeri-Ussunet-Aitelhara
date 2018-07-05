@@ -19,11 +19,22 @@
 			<basic name="prenom" />
 			<basic name="dateNaissance" />
 			
+			
 			<one-to-many name="comptes">
-				<join-column name="idCompteCol" referenced-column-name="idCompte"/>
+				<join-column name="idClientCol" referenced-column-name="idClient"/>
 			</one-to-many>
 			
+			<!-- 
+				IMPORTANT: 
+					- RELATION BIDIRECTIONNELLE SIGNIFIE QUE 2 OBJECTS ON UN ATTRIBUT DE CHACUN L'UN DANS L'AUTRE.
+					- LES ATTRIBUTS SONT LOCALISE PAR HIBERNATE EN UTILISANT LA METHODE GET DE CHACUN.
+			-->
 			
+			<!-- 
+				- DANS L'OBJET CLIENT, IL Y A UN ATTRIBUT DE TYPE ADRESSE
+				  MAIS PAS D'ATTRIBUT DE TYPE CLIENT DANS LA L'OBJET ADRESSE
+				  CE QUI FAIT QUE CETTE RELATION EST UNIDIRECTIONNELLE.
+			-->
 			<one-to-one name="adresse">
 				<join-column name="adresseCol" referenced-column-name="adresseId" />
 			</one-to-one>
@@ -46,7 +57,6 @@
 			<basic name="numRue" />
 			<basic name="pays" />
 			<basic name="adresseOpt" />
-			<basic name="client" />
 			
 		</attributes>
 	</entity>
