@@ -10,7 +10,7 @@
 		<table name="client" />
 		<attributes>
 
-			<id name="idClient">
+			<id name="id">
 				<generated-value strategy="IDENTITY" />
 			</id>
 	
@@ -21,7 +21,7 @@
 			
 			
 			<one-to-many name="comptes">
-				<join-column name="idClientCol" referenced-column-name="idClient"/>
+				<join-column name="idClientCol" referenced-column-name="id"/>
 			</one-to-many>
 			
 			<!-- 
@@ -36,7 +36,7 @@
 				  CE QUI FAIT QUE CETTE RELATION EST UNIDIRECTIONNELLE.
 			-->
 			<one-to-one name="adresse">
-				<join-column name="adresseCol" referenced-column-name="adresseId" />
+				<join-column name="adresseCol" referenced-column-name="id" />
 			</one-to-one>
 			
 		</attributes>
@@ -47,7 +47,7 @@
 		<table name="adresse" />
 		<attributes>
 
-			<id name="adresseId">
+			<id name="id">
 				<generated-value strategy="IDENTITY" />
 			</id>
 	
@@ -66,7 +66,7 @@
 		<table name="compte" />
 		<attributes>
 
-			<id name="idCompte">
+			<id name="id">
 				<generated-value strategy="IDENTITY" />
 			</id>
 
@@ -77,11 +77,11 @@
 			<basic name="typeCompte" />
 
 			<one-to-one name="cb">
-				<join-column name="carteBleueCol" referenced-column-name="idCb" />
+				<join-column name="carteBleueCol" referenced-column-name="id" />
 			</one-to-one>
 		
 			<one-to-one name="cheque">
-				<join-column name="idCheque" referenced-column-name="idChequier" />
+				<join-column name="idCheque" referenced-column-name="id" />
 			</one-to-one>
 			
 		</attributes>
@@ -92,7 +92,7 @@
 		<table name="cartebleue" />
 		<attributes>
 
-			<id name="idCb">
+			<id name="id">
 				<generated-value strategy="IDENTITY" />
 			</id>
 
@@ -108,7 +108,7 @@
 		<table name="chequier" />
 		<attributes>
 
-			<id name="idChequier">
+			<id name="id">
 				<generated-value strategy="IDENTITY" />
 			</id>
 

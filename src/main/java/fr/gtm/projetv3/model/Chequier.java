@@ -4,35 +4,36 @@ import java.time.LocalDate;
 
 public class Chequier {
 
-	private Integer idChequier;
+	private Integer id;
 	private LocalDate dateEnvoi;
 	private LocalDate dateReception;
 	
 	/**
-	 * @param idChequier
+	 * @param id
 	 * @param dateEnvoi
 	 * @param dateReception
 	 */
-	public Chequier(Integer idChequier, LocalDate dateEnvoi, LocalDate dateReception) {
+	public Chequier(Integer id, LocalDate dateEnvoi, LocalDate dateReception) {
 		super();
-		this.idChequier = idChequier;
+		this.id = id;
 		this.dateEnvoi = dateEnvoi;
 		this.dateReception = dateReception;
 	}
-	
+
 	/**
 	 * 
 	 */
 	public Chequier() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Integer getIdChequier() {
-		return idChequier;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdChequier(Integer idChequier) {
-		this.idChequier = idChequier;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public LocalDate getDateEnvoi() {
@@ -53,7 +54,7 @@ public class Chequier {
 
 	@Override
 	public String toString() {
-		return "Chequier [idChequier=" + idChequier + ", dateEnvoi=" + dateEnvoi + ", dateReception=" + dateReception
-				+ "]";
+		return "Chequier [id=" + id + ", dateEnvoi=" + dateEnvoi + ", dateReception=" + dateReception + "]";
 	}
+	
 }
