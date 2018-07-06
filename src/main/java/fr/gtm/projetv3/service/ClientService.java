@@ -26,10 +26,10 @@ public class ClientService {
 	ClientRepository repo;
 	
 	@Autowired
-	ObjectFactory<Results> res;
+	private ObjectFactory<Results> res;
 	
 	Integer id;
-	Map<Integer,Results> getResult = new HashMap<Integer,Results>(); 
+	private Map<Integer,Results> getResult = new HashMap<Integer,Results>(); 
 		
 	
 	/**

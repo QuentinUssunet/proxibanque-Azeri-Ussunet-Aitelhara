@@ -28,7 +28,7 @@
 		</div>
 
 		<input path="id" type="hidden" name="conseillerId"
-			value="${conseillerClientele.id}" />
+			value="${client.id}" />
 
 		<!-- Banner -->
 

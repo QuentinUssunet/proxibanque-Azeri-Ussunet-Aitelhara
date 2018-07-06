@@ -27,82 +27,94 @@ import fr.gtm.projetv3.service.CompteService;
 
 @Controller
 public class IndexController {
-	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
+	
 
 	@Autowired
 	ClientService clientService;
-	
+
 	@Autowired
 	CompteService compteService;
-	
+
 	@Autowired
 	CarteBleueService carteBleueService;
-	
-	/**
-	 * 
+
+	 /**
+	 *
 	 * @return
 	 */
-	@RequestMapping("/index")
-	public ModelAndView index() {
-		final ModelAndView mav = new ModelAndView("index");
-		return mav;
-	}
+	 @RequestMapping("/index")
+	 public ModelAndView index() {
+	 final ModelAndView mav = new ModelAndView("index");
+	 return mav;
+	 }
 	
-	/**
-	 * 
+	 /**
+	 *
 	 * @param nomprenom
 	 * @return
 	 */
-	@PostMapping("/index")
-	public String authentification(@RequestParam ("nom-prenom")String nomprenom) {
-		LOGGER.info(nomprenom);
-		String nom = nomprenom.split(" ")[0];
-		LOGGER.info(nom);
-		String prenom = nomprenom.split(" ")[1];
-		LOGGER.info(prenom);
-		List<Client> listCli = this.clientService.findByEntry(nom, prenom);
-		if(listCli.size()!=0) {
-//			final ModelAndView mav = new ModelAndView("authen");
-//			mav.addObject("searchid", listCli);
-			return "redirect:/authen.html";
-		} else {
-			// TODO message erreur user inconnu réidentification nécessaire.
-			return null;
-		}
-		
-	}
+	 @PostMapping("/index")
+	 public String authentification(@RequestParam ("nom-prenom")String nomprenom)
+	 {
 	
-	/**
-	 * 
+	 String nom = nomprenom.split(" ")[0];
+	
+	 String prenom = nomprenom.split(" ")[1];
+	
+	 List<Client> listCli = this.clientService.findByEntry(nom, prenom);
+	 if(listCli.size()!=0) {
+	// final ModelAndView mav = new ModelAndView("authen");
+	// mav.addObject("searchid", listCli);
+	 return "redirect:/authen.html";
+	 } else {
+	 // TODO message erreur user inconnu réidentification nécessaire.
+	 return null;
+	 }
+	
+	 }
+	
+	 /**
+	 *
 	 * @return
 	 */
-	@GetMapping
-	public ModelAndView date() {
-		final ModelAndView mav = new ModelAndView("authen");
-		return mav;
-	}
+	 @GetMapping
+	 public ModelAndView date() {
+	 final ModelAndView mav = new ModelAndView("authen");
+	 return mav;
+	 }
 	
-	/**
+	 /**
 	 * @param dateNaissance
 	 * @return
 	 */
-	@PostMapping("/authen")
-	public ModelAndView date(@RequestParam ("dateNaissance") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate dateNaissance) {
-		
-		Client result = this.clientService.checkDate(dateNaissance);
-		Integer idClient = this.clientService.getId(dateNaissance);
-		ModelAndView renvoi = null;
-		if(result!=null) {
-			List<Compte> listComtes = this.clientService.listComptes(idClient);
-			final ModelAndView mav = new ModelAndView("accueil");
-			mav.addObject(listComtes);
-			renvoi = mav;
-		} else {
-			// TODO Mauvaise date de naissance merci de recommencer l'authentification.
-			// TODO redirect /index
-		}		
-	return renvoi;
-	}
+	 @PostMapping("/authen")
+	 public ModelAndView date(@RequestParam ("dateNaissance")
+	 @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate dateNaissance) {
+	
+	 Client result = this.clientService.checkDate(dateNaissance);
+	 Integer idClient = this.clientService.getId(dateNaissance);
+	 ModelAndView renvoi = null;
+	 if(result!=null) {
+	 List<Compte> listComtes = this.clientService.listComptes(idClient);
+	 final ModelAndView mav = new ModelAndView("accueil");
+	 mav.addObject(listComtes);
+	 renvoi = mav;
+	 } else {
+	 // TODO Mauvaise date de naissance merci de recommencer l'authentification.
+	 // TODO redirect /index
+	 }
+	 return renvoi;
+	 }
+	 
+	 //mise a jour adresse
+	 @RequestMapping("/editClient")
+	 public ModelAndView vueSubmit() {
+		 final ModelAndView mav = new ModelAndView("editClient");
+		 return mav;
+	 }
+	 
+	 
+
 	
 	
 	
