@@ -19,7 +19,7 @@
 
 			<ul class="nav navbar-left">
 
-				<li role="presentation"><a href="index.jsp"><span
+				<li role="presentation"><a href="<c:url value="/index.html"/>"><span
 						class="glyphicon glyphicon-off" aria-hidden="true"></span>
 						Se Déconnecter</a></li>
 

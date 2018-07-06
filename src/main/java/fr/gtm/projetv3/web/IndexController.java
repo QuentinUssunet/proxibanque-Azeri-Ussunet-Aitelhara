@@ -100,9 +100,9 @@ public class IndexController {
 		Integer idClient = this.clientService.getId(dateNaissance);
 		ModelAndView renvoi = null;
 		if (result != null) {
-//			List<Compte> listComtes = this.compteService.listComptes(idClient);
+			List<Compte> listComtes = this.compteService.listComptes(idClient);
 			final ModelAndView mav = new ModelAndView("accueil");
-//			mav.addObject(listComtes);
+			mav.addObject("list", listComtes);
 			renvoi = mav;
 		} else {
 			final ModelAndView mav = new ModelAndView("erreur");
