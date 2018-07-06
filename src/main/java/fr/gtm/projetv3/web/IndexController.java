@@ -3,7 +3,6 @@ package fr.gtm.projetv3.web;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -103,6 +102,7 @@ public class IndexController {
 			List<Compte> listComtes = this.compteService.listComptes(idClient);
 			final ModelAndView mav = new ModelAndView("accueil");
 			mav.addObject("list", listComtes);
+			mav.addObject("idClient", idClient);
 			renvoi = mav;
 		} else {
 			final ModelAndView mav = new ModelAndView("erreur");
@@ -123,8 +123,9 @@ public class IndexController {
 
 
 	@GetMapping("/virement")
-	public ModelAndView virement(@RequestParam("idClient") Integer idClient) {
+	public ModelAndView virement(@RequestParam("id") Integer idClient) {
 		final ModelAndView mav = new ModelAndView("virement");
+		
 		List<Compte> listComptesCli = this.compteService.listComptes(idClient);
 		List<Compte> listComtes = this.compteService.listAll();
 		
@@ -132,5 +133,20 @@ public class IndexController {
 		mav.addObject("listAllComptes", listComtes);
 		return mav;
 	}
-
+	
+	@PostMapping("/virement")
+	public ModelAndView virement(@RequestParam("montant") Double montant, 
+			Integer debiteurId, Integer crediteurId) {
+		
+		final ModelAndView mav = new ModelAndView("virement");
+		
+		
+		
+		
+		
+		return mav;
+	}
+	
+	
+	
 }

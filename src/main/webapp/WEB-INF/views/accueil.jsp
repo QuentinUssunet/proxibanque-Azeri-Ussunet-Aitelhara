@@ -112,7 +112,7 @@
 				<label for="idCompte">ID Compte </label> <select
 					class="form-control" name="idCcompte" id="idCompte">
 
-					<c:forEach var="compte" items="${listeCompte}">
+					<c:forEach var="compte" items="${list}">
 
 						<option value="${compte.id}"><c:out value="${compte.id}" /></option>
 
@@ -130,7 +130,7 @@
 			
 			
 			<!-- A CHANGER POUR UN LIENT PLUTOT QU'UN FORM BOUTON -->
-			<a href="${chemin}virement.html">
+			<a href="${chemin}virement.html?id=${idClient}">
 
 				<button type="submit" class="btn btn-success">Effectuer un
 					Virement</button>
