@@ -1,4 +1,5 @@
 package fr.gtm.projetv3.service;
+
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -23,14 +24,11 @@ public class ClientService {
 
 	@Autowired
 	private ObjectFactory<Results> res;
-	
+
 	Integer id;
 
-	private Map<Integer,Results> getResult = new HashMap<Integer,Results>(); 
+	private Map<Integer, Results> getResult = new HashMap<Integer, Results>();
 
-	
-
-	
 	/**
 	 * 
 	 * @param nom
@@ -42,17 +40,22 @@ public class ClientService {
 		Results object = this.res.getObject();
 		object.setId(id);
 		getResult.put(id, object);
-		List<Client> c1 = object.searchByName(nom);
-		List<Client> c2 = object.searchByFirstName(prenom);
-		if (c1.isEmpty()) {
-			return c2;
+		if (prenom.isEmpty()) {
+			List<Client> c2 = object.searchByName(nom);
+			if(c2!=null) {
+				return c2;
+			} else {
+				return null;
+			}
 		} else {
-			return c1;
+			List<Client> c1 = object.searchByNameAndFirstName(nom, prenom);
+			if (c1!=null) {
+				return c1;
+			} else return null;
 		}
 
 	}
 
-	
 	/**
 	 * 
 	 * @param dateNaissance
@@ -77,7 +80,7 @@ public class ClientService {
 		object.setIdClient(idClient);
 		return idClient;
 	}
-	
+
 	/**
 	 * 
 	 * @param idClient

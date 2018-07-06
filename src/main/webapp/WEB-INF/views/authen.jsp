@@ -18,7 +18,7 @@
 
 	<!-- Banner -->
 	<section id="banner">
-		<span class="alert alert-danger" role="alert">${erreur}</span>
+		
 		<h2>Application ProxiBanque</h2>
 		<p>Bienvenue sur l'application ProxiBanque , votre outil de
 			gestion de Compte</p>

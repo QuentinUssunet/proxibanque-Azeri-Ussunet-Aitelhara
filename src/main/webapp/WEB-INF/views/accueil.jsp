@@ -25,15 +25,6 @@
 
 			</ul>
 
-			<ul class="nav navbar-right">
-
-				<form method="post">
-					<input id="title" name="title" placeholder=" Name search " />
-					<button class="btn btn-success">Valider</button>
-				</form>
-
-			</ul>
-
 		</div>
 
 
@@ -140,16 +131,7 @@
 
 			<!--<c:url value="/" var="chemin" />-->
 
-			<br>
-
-			<a href="<c:url value="/editClient.html?id="/>" 
-				class="form-inline form-group container">
-
-				<button type="submit" class="btn btn-success">Modifier
-					votre Profil</button>
-
-			</a>
-
+			
 			<br>
 
 			<form action="${chemin}consulter" method="post"

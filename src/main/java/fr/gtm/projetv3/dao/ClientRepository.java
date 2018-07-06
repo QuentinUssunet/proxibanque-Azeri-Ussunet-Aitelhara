@@ -37,8 +37,8 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 	 *            Prénom du Client
 	 * @return Liste de prénom de tous les Clients
 	 */
-	@Query(value = "SELECT * FROM client WHERE prenom = ?1", nativeQuery = true)
-	List<Client> getAllByFirstName(String prenom);
+	@Query(value = "SELECT * FROM client WHERE nom = ?1, prenom = ?2", nativeQuery = true)
+	List<Client> getAllByNameAndFirstName(String nom, String prenom);
 	
 
 }
