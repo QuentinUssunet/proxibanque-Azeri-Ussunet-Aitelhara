@@ -19,16 +19,25 @@
 			<basic name="prenom" />
 			<basic name="dateNaissance" />
 			
-			
+			<!-- RELATION UNIDIRECTIONNELLE, L'ENTITE REFERENCE N'A PAS D'ATTRIBUT DE CET ENTITE.
 			<one-to-many name="comptes">
 				<join-column name="idClientCol" referenced-column-name="id"/>
-			</one-to-many>
+			</one-to-many>-->
 			
 			<!-- 
 				IMPORTANT: 
 					- RELATION BIDIRECTIONNELLE SIGNIFIE QUE 2 OBJECTS ON UN ATTRIBUT DE CHACUN L'UN DANS L'AUTRE.
 					- LES ATTRIBUTS SONT LOCALISE PAR HIBERNATE EN UTILISANT LA METHODE GET DE CHACUN.
+					
+				- MappedBy utilisé pour définir une relation bidirectionnelle 
+				- LA TABLE CLIENT POSSEDE UNE LISTE DE D'OBJET COMPTE ET L'OBJET COMPTE POSSEDE UN ATTRIBUT DE TYPE CLIENT
+				- L'ATTRIBUT <name="compte"> EST L'ATTRIBUT DE TYPE COMPTE DANS L'OBJET CLIENT ET MAPPED-BY EST
+				  L'ATTRIBUT DE <name=""> DANS LA RELATION MANY-TO-ONE DANS L'ENTITE COMPTE.
 			-->
+			
+			<one-to-many name="comptes" mapped-by="client">
+			</one-to-many>
+			
 			
 			<!-- 
 				- DANS L'OBJET CLIENT, IL Y A UN ATTRIBUT DE TYPE ADRESSE
@@ -38,6 +47,7 @@
 			<one-to-one name="adresse">
 				<join-column name="adresseCol" referenced-column-name="id" />
 			</one-to-one>
+			
 			
 		</attributes>
 	</entity>
@@ -76,6 +86,10 @@
 			<basic name="solde" />
 			<basic name="typeCompte" />
 
+			<many-to-one name="client">
+				<join-column name="clientId" referenced-column-name="id" />
+			</many-to-one>
+			
 			<one-to-one name="cb">
 				<join-column name="carteBleueCol" referenced-column-name="id" />
 			</one-to-one>
@@ -83,6 +97,7 @@
 			<one-to-one name="cheque">
 				<join-column name="idCheque" referenced-column-name="id" />
 			</one-to-one>
+			
 			
 		</attributes>
 	</entity>

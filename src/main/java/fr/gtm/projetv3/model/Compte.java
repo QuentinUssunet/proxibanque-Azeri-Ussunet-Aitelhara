@@ -25,6 +25,15 @@ public class Compte {
 	private Chequier cheque;
 	private Double solde;
 	private String typeCompte;
+	private Client client;
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
 
 	/**
 	 * Constructeur sans Paramètres
@@ -36,24 +45,17 @@ public class Compte {
 
 	/**
 	 * @param id
-	 *            Identifiant de compte en base de données
 	 * @param numCC
-	 *            Numéro de Compte
 	 * @param libeller
-	 *            Libeller de compte
 	 * @param dateOuverture
-	 *            Date d'ouverture de Compte
 	 * @param cb
-	 *            Carte bancaire Lieé au Compte
 	 * @param cheque
-	 *            Chéquier liée au compte
 	 * @param solde
-	 *            Solde de Compte
 	 * @param typeCompte
-	 *            Type de Compte Epargne ou Courant
+	 * @param client
 	 */
 	public Compte(Integer id, Long numCC, String libeller, LocalDate dateOuverture, CarteBleue cb, Chequier cheque,
-			Double solde, String typeCompte) {
+			Double solde, String typeCompte, Client client) {
 		super();
 		this.id = id;
 		this.numCC = numCC;
@@ -63,8 +65,9 @@ public class Compte {
 		this.cheque = cheque;
 		this.solde = solde;
 		this.typeCompte = typeCompte;
+		this.client = client;
 	}
-
+	
 	/**
 	 * 
 	 * @return Idnetifiant de compte
