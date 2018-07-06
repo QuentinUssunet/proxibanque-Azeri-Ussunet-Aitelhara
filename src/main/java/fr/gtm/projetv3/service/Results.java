@@ -48,13 +48,14 @@ public class Results {
 	 * @param dateNaissance
 	 * @return
 	 */
-	 public Integer getIdClient(LocalDate dateNaissance) {
+	public Integer getIdClient(LocalDate dateNaissance) {
 	 List<Client> clients = this.repo.findAll();
 	 Integer idClient = null;
 	 for (int i = 0; i < clients.size(); i++) {
-	 if (clients.get(i).getDateNaissance().equals(dateNaissance)) {
-	 idClient = clients.get(i).getId();
-	 }
+		 if (clients.get(i).getDateNaissance().equals(dateNaissance)) {
+			 idClient = clients.get(i).getId();
+			 this.setIdClient(idClient);
+		 }
 	 }
 	 return idClient;
 	 }

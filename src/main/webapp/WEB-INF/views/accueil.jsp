@@ -80,8 +80,6 @@
 
 								<th>Date d'ouveture</th>
 
-								<th>Type de Carte Bancaire</th>
-
 								<th>Solde</th>
 
 							</tr>
@@ -90,41 +88,19 @@
 
 						<tbody>
 
-							<c:forEach var="compte" items="${client.comptes}">
+							<c:forEach var="compte" items="${list}">
 
 								<tr>
 
-									<th><c:out value="${compte.id}" /></th>
+									<td>${compte.id}</td>
 
-									<th><c:out value="${compte.numeroDeCompte}" /></th>
+									<td>${compte.numCC}</td>
+									
+									<td>${compte.typeCompte}</td>								
 
-									<td><c:out value="${compte.getClass().getSimpleName()}" /></td>
+									<td>${compte.dateOuverture}</td>
 
-									<c:choose>
-										<c:when
-											test="${compte.getClass().getSimpleName() == 'CompteCourant'}">
-											<td><c:out value="${compte.decouvert}" /></td>
-										</c:when>
-										<c:otherwise>
-											<td><c:out value="--" /></td>
-										</c:otherwise>
-									</c:choose>
-
-									<c:choose>
-										<c:when
-											test="${compte.getClass().getSimpleName() == 'CompteEpargne'}">
-											<td><c:out value="${compte.taux}" /></td>
-										</c:when>
-										<c:otherwise>
-											<td><c:out value="--" /></td>
-										</c:otherwise>
-									</c:choose>
-
-									<th><c:out value="${compte.dateOuverture}" /></th>
-
-									<th><c:out value="${compte.cb}" /></th>
-
-									<th><c:out value="${compte.solde} Euro" /></th>
+									<td>${compte.solde} €</td>
 
 								</tr>
 

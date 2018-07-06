@@ -1,5 +1,7 @@
 package fr.gtm.projetv3.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.gtm.projetv3.dao.CompteRepository;
@@ -16,19 +18,16 @@ public class CompteService {
 	@Autowired
 	CompteRepository repo;
 
-	
-	
 	/**
 	 * 
 	 * @param idCompte
 	 * @return
 	 */
-	// Trouver un compte 
+	// Trouver un compte
 	public Compte findById(Integer idCompte) {
 		return this.repo.getOne(idCompte);
 	}
 
-	
 	/**
 	 * 
 	 * @param mt
@@ -46,7 +45,6 @@ public class CompteService {
 		return this.repo.saveSolde(solde, idCompte);
 	}
 
-
 	/**
 	 * 
 	 * @param mt
@@ -58,6 +56,17 @@ public class CompteService {
 		Double solde = this.findById(idCompte).getSolde();
 		solde += mt;
 		return this.repo.saveSolde(solde, idCompte);
+	}
+	
+	/**
+	 * 
+	 * @param idClient
+	 * @return
+	 */
+	// Affichage des comptes du client
+	public List<Compte> listComptes(Integer idClient) {
+		List<Compte> comptes = this.repo.getComptesByIdClient(idClient);
+		return comptes;
 	}
 
 }

@@ -1,4 +1,5 @@
 package fr.gtm.projetv3.service;
+
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -23,14 +24,11 @@ public class ClientService {
 
 	@Autowired
 	private ObjectFactory<Results> res;
-	
+
 	Integer id;
 
-	private Map<Integer,Results> getResult = new HashMap<Integer,Results>(); 
+	private Map<Integer, Results> getResult = new HashMap<Integer, Results>();
 
-	
-
-	
 	/**
 	 * 
 	 * @param nom
@@ -52,7 +50,6 @@ public class ClientService {
 
 	}
 
-	
 	/**
 	 * 
 	 * @param dateNaissance
@@ -77,15 +74,6 @@ public class ClientService {
 		object.setIdClient(idClient);
 		return idClient;
 	}
-	
-	/**
-	 * 
-	 * @param idClient
-	 * @return
-	 */
-	// Affichage des comptes du client
-	public List<Compte> listComptes(Integer idClient) {
-		List<Compte> comptes = this.repo.getOne(idClient).getComptes();
-		return comptes;
-	}
+
+
 }
