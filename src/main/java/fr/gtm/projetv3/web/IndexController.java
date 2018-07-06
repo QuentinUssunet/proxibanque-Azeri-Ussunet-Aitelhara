@@ -55,6 +55,7 @@ public class IndexController {
 	@PostMapping("/index")
 	public String authentification(@RequestParam("nom-prenom") String nomprenom) {
 
+
 		
 		String nom = nomprenom.split(" ")[0];
 
@@ -94,6 +95,7 @@ public class IndexController {
 	@PostMapping("/authen")
 	public ModelAndView date(
 			@RequestParam("dateNaissance") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateNaissance) {
+
 		Client result = this.clientService.checkDate(dateNaissance);
 		Integer idClient = this.clientService.getId(dateNaissance);
 		ModelAndView renvoi = null;
@@ -105,11 +107,12 @@ public class IndexController {
 		} else {
 			final ModelAndView mav = new ModelAndView("erreur");
 			renvoi = mav;
+
 		}
 		return renvoi;
 	}
 
-	
+
 	@RequestMapping("/erreur")
 	public ModelAndView badr() {
 		final ModelAndView mav = new ModelAndView("erreur");
@@ -117,16 +120,17 @@ public class IndexController {
 	}
 	
 	
-	// mise a jour adresse
-	@RequestMapping("/editClient")
-	public ModelAndView vueSubmit() {
-		final ModelAndView mav = new ModelAndView("editClient");
+
+
+	@GetMapping("/virement")
+	public ModelAndView virement(@RequestParam("idClient") Integer idClient) {
+		final ModelAndView mav = new ModelAndView("virement");
+		List<Compte> listComptesCli = this.compteService.listComptes(idClient);
+		List<Compte> listComtes = this.compteService.listAll();
+		
+		mav.addObject("listClient", listComptesCli);
+		mav.addObject("listAllComptes", listComtes);
 		return mav;
 	}
-
-//	@PostMapping("/editClient")
-//	public ModelAndView modifAdress() {
-//
-//	}
 
 }

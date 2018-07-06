@@ -15,8 +15,7 @@ import fr.gtm.projetv3.model.Client;
  * @author Azeri, Ussunet,Aitelhara
  * 
  *         Cette Interface qui communique avec la base de données et qui permet
- *         de remonter les infos du client sotcker en base
- *         de données
+ *         de remonter les infos du client sotcker en base de données
  */
 
 @Repository
@@ -32,7 +31,8 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 	List<Client> getAllByName(String nom);
 
 	/**
-	 * 
+	 * @param nom
+	 *            Nom du Client
 	 * @param prenom
 	 *            Prénom du Client
 	 * @return Liste de prénom de tous les Clients
@@ -40,5 +40,6 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 	@Query(value = "SELECT * FROM client WHERE nom = ?1, prenom = ?2", nativeQuery = true)
 	List<Client> getAllByNameAndFirstName(String nom, String prenom);
 	
+
 
 }

@@ -58,10 +58,9 @@
 			<!-- Liste de tous les comptes -->
 
 			<div class="panel panel-default">
-
-
+				
 				<div class="panel-body">
-
+					<span>Liste des comptes</span>
 					<table class="table">
 
 						<thead>
@@ -74,25 +73,21 @@
 
 								<th>Type de compte</th>
 
-								<th>Solde</th>
-
 							</tr>
 
 						</thead>
 
 						<tbody>
 
-							<c:forEach var="compte" items="${listeCompte}">
+							<c:forEach var="compte" items="${listComptes}">
 
 								<tr>
 
-									<th><c:out value="${compte.id}" /></th>
+									<td>${compte.id}</td>
 
-									<th><c:out value="${compte.numeroCompte}" /></th>
+									<td>${compte.numCC}</td>
 
-									<th><c:out value="${compte.getClass().getSimpleName()}" /></th>
-
-									<th><c:out value="${compte.solde} Euro" /></th>
+									<td>${compte.typeCompte}</td>
 
 								</tr>
 
@@ -124,9 +119,9 @@
 						<label for="compteDebiteur">Id compte à débiter</label> <select
 							class="form-control" id="compteDebiteur" name="compteDebiteur">
 
-							<c:forEach var="compte" items="${listeCompte}">
+							<c:forEach var="compte" items="${listeComptes}">
 
-								<option><c:out value="${compte.numeroDeCompte}" /></option>
+								<option><c:out value="${compte.numCC}" /></option>
 
 							</c:forEach>
 

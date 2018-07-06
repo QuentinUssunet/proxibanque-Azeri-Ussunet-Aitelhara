@@ -29,6 +29,7 @@ public class ClientService {
 
 	private Map<Integer, Results> getResult = new HashMap<Integer, Results>();
 
+
 	/**
 	 * 
 	 * @param nom
@@ -91,4 +92,5 @@ public class ClientService {
 		List<Compte> comptes = this.repo.getOne(idClient).getComptes();
 		return comptes;
 	}
+
 }
