@@ -27,7 +27,7 @@ public class ClientService {
 
 	Integer id;
 
-	private Map<Integer, Results> getResult = new HashMap<Integer, Results>();
+	public Map<Integer, Results> getResult = new HashMap<Integer, Results>();
 
 	/**
 	 * 

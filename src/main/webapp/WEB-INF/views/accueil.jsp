@@ -56,11 +56,7 @@
 
 				<div class="panel-heading">
 
-					Liste des comptes de:
-
-					<c:out value="${client.prenom}" />
-
-					<c:out value="${client.nom}" />
+					Liste des comptes :
 
 				</div>
 
@@ -152,13 +148,12 @@
 			
 			
 			<!-- A CHANGER POUR UN LIENT PLUTOT QU'UN FORM BOUTON -->
-			<form action="${chemin}virement" method="get"
-				class="form-inline form-group container">
+			<a href="${chemin}virement.html">
 
 				<button type="submit" class="btn btn-success">Effectuer un
 					Virement</button>
 
-			</form>
+			</a>
 
 		</div>
 

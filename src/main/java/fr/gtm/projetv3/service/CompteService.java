@@ -69,4 +69,8 @@ public class CompteService {
 		return comptes;
 	}
 
+	public List<Compte> listAll() {		
+		return this.repo.findAll();
+	}
+
 }

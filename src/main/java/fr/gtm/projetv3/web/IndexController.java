@@ -111,4 +111,14 @@ public class IndexController {
 		return mav;
 	}
 
+	@GetMapping("/virement")
+	public ModelAndView virement(@RequestParam("idClient") Integer idClient) {
+		final ModelAndView mav = new ModelAndView("virement");
+		List<Compte> listComptesCli = this.compteService.listComptes(idClient);
+		List<Compte> listComtes = this.compteService.listAll();
+		
+		mav.addObject("listClient", listComptesCli);
+		mav.addObject("listAllComptes", listComtes);
+		return mav;
+	}
 }
