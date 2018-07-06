@@ -20,18 +20,9 @@
 
 			<ul class="nav navbar-left">
 
-				<li role="presentation"><a href="index.jsp"><span
+				<li role="presentation"><a href="<c:url value="/index.html"/>"><span
 						class="glyphicon glyphicon-off" aria-hidden="true"></span>
 						Se Déconnecter</a></li>
-
-			</ul>
-
-			<ul class="nav navbar-right">
-
-				<form method="post">
-					<input id="title" name="title" placeholder=" Name search " />
-					<button class="btn btn-success">Valider</button>
-				</form>
 
 			</ul>
 
@@ -72,8 +63,6 @@
 
 								<th>Date d'ouveture</th>
 
-								<th>Type de Carte Bancaire</th>
-
 								<th>Solde</th>
 
 							</tr>
@@ -81,47 +70,21 @@
 						</thead>
 
 						<tbody>
-
-							<c:forEach var="compte" items="${client.comptes}">
-
-								<tr>
-
-									<th><c:out value="${compte.id}" /></th>
-
-									<th><c:out value="${compte.numeroDeCompte}" /></th>
-
-									<td><c:out value="${compte.getClass().getSimpleName()}" /></td>
-
-									<c:choose>
-										<c:when
-											test="${compte.getClass().getSimpleName() == 'CompteCourant'}">
-											<td><c:out value="${compte.decouvert}" /></td>
-										</c:when>
-										<c:otherwise>
-											<td><c:out value="--" /></td>
-										</c:otherwise>
-									</c:choose>
-
-									<c:choose>
-										<c:when
-											test="${compte.getClass().getSimpleName() == 'CompteEpargne'}">
-											<td><c:out value="${compte.taux}" /></td>
-										</c:when>
-										<c:otherwise>
-											<td><c:out value="--" /></td>
-										</c:otherwise>
-									</c:choose>
-
-									<th><c:out value="${compte.dateOuverture}" /></th>
-
-									<th><c:out value="${compte.cb}" /></th>
-
-									<th><c:out value="${compte.solde} Euro" /></th>
+							
+								<tr>							
+	
+									<td>${compte.id}</td>
+	
+	 								<td>${compte.numCC}</td>
+	
+									<td>${compte.typeCompte}</td>
+	
+									<td>${compte.dateOuverture}</td>
+	
+									<td>${compte.solde} €</td>								
 
 								</tr>
-
-							</c:forEach>
-
+						
 						</tbody>
 
 					</table>
@@ -134,7 +97,7 @@
 
 			<br>
 
-			<form action="${chemin}virement" method="get"
+			<form action="${chemin}chequier" method="get"
 				class="form-inline form-group container">
 
 				<button type="submit" class="btn btn-success">Demande de
@@ -144,7 +107,7 @@
 
 			<br>
 
-			<form action="${chemin}modifier" method="post"
+			<form <%-- action="${chemin}modifier" method="post" --%>
 				class="form-inline form-group container">
 
 				<label for="idCompte">Type de Carte </label> <select
@@ -158,7 +121,7 @@
 
 				</select>
 
-				<button name="but" type="submit" class="btn btn-success">
+				<button name="but" type="submit" class="btn btn-success" disabled>
 					Retrait Carte</button>
 
 			</form>
@@ -180,8 +143,8 @@
 
 						<div class="input-group-addon">€</div>
 
-						<input type="number" class="form-control" id="montantVirement"
-							name="montantVirement" placeholder="montant">
+						<input type="number" class="form-control" id="montantRetrait"
+							name="montantRetrait" placeholder="montant">
 
 						<div class="input-group-addon">.00</div>
 

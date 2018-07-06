@@ -1,7 +1,10 @@
 package fr.gtm.projetv3.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.gtm.projetv3.dao.CompteRepository;
@@ -15,6 +18,8 @@ import fr.gtm.projetv3.model.Compte;
 
 public class CompteService {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(CompteService.class);
+
 	@Autowired
 	CompteRepository repo;
 
@@ -24,8 +29,8 @@ public class CompteService {
 	 * @return
 	 */
 	// Trouver un compte
-	public Compte findById(Integer idCompte) {
-		return this.repo.getOne(idCompte);
+	public Optional<Compte> findById(Integer idCompte) {
+		return this.repo.findById(idCompte);
 	}
 
 	/**
@@ -35,14 +40,28 @@ public class CompteService {
 	 * @return
 	 */
 	// D�bit compte pour retraits ou virements.
-	public Compte debitCompte(Double mt, Integer idCompte) {
-		Double solde = this.findById(idCompte).getSolde();
-		if (mt < solde) {
-			solde -= mt;
-		} else {
-			// TODO ExceptionSoldeInsuffisant
+	public String debitCompte(Double mt, Integer idCompte) {
+		String result = null;
+		Double solde = null;
+		Optional<Compte> compte = this.findById(idCompte);
+		if (compte.isPresent()) {
+			solde = this.findById(idCompte).get().getSolde();
+			String typeCompte = compte.get().getTypeCompte();
+			if (typeCompte.equals("courant")) {
+				if (mt < solde) {
+					solde -= mt;
+					LOGGER.info("idCompte=" + idCompte);
+					LOGGER.info("solde=" + solde);
+					compte.get().setSolde(solde);
+					this.repo.saveSolde(solde, idCompte);
+					result = "redirect:/accueil";
+				} else if (mt > solde || mt > 300) {
+					result = "redirect:/erreur";
+				}
+			}
+
 		}
-		return this.repo.saveSolde(solde, idCompte);
+		return result;
 	}
 
 	/**
@@ -53,11 +72,11 @@ public class CompteService {
 	 */
 	// Cr�dit compte pour virements.
 	public Compte creditCompte(Double mt, Integer idCompte) {
-		Double solde = this.findById(idCompte).getSolde();
+		Double solde = this.findById(idCompte).get().getSolde();
 		solde += mt;
 		return this.repo.saveSolde(solde, idCompte);
 	}
-	
+
 	/**
 	 * 
 	 * @param idClient
@@ -69,7 +88,7 @@ public class CompteService {
 		return comptes;
 	}
 
-	public List<Compte> listAll() {		
+	public List<Compte> listAll() {
 		return this.repo.findAll();
 	}
 

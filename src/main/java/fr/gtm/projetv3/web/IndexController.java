@@ -2,7 +2,10 @@ package fr.gtm.projetv3.web;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -27,6 +30,7 @@ import fr.gtm.projetv3.service.CompteService;
 @Controller
 public class IndexController {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 	@Autowired
 	ClientService clientService;
 
@@ -81,7 +85,7 @@ public class IndexController {
 	 *
 	 * @return
 	 */
-	@GetMapping
+	@GetMapping("authen")
 	public ModelAndView date() {
 		final ModelAndView mav = new ModelAndView("authen");
 		return mav;
@@ -147,6 +151,26 @@ public class IndexController {
 		return mav;
 	}
 	
+	@GetMapping("/retrait")
+	public ModelAndView choixRetrait(@RequestParam ("idCcompte")Integer idCompte) {
+		final ModelAndView mav = new ModelAndView("retrait");
+		Optional<Compte> wrapper = this.compteService.findById(idCompte);
+		Compte cpt = null;				
+		if(wrapper.isPresent()) {
+			cpt = wrapper.get();
+			mav.addObject("compte", cpt);
+			LOGGER.info("idCompte="+ idCompte);
+		}		
+		return mav;
+	}
 	
+	@PostMapping("/retrait")
+	public String retraitCash(@RequestParam ("idCcompte")Integer idCompte, @RequestParam ("montantRetrait")Double mt) {
+		String result = null;
+		LOGGER.info("idCompte="+ idCompte);
+		LOGGER.info("montant="+ mt);
+		result = this.compteService.debitCompte(mt, idCompte);
+		return result;
+	}
 	
 }

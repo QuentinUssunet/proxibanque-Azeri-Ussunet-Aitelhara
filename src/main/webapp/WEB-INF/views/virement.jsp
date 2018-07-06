@@ -20,20 +20,12 @@
 
 			<ul class="nav navbar-left">
 
-				<li role="presentation"><a href="index.jsp"><span
+				<li role="presentation"><a href="<c:url value="/index.html"/>"><span
 						class="glyphicon glyphicon-off" aria-hidden="true"></span>
 						Se Déconnecter</a></li>
 
 			</ul>
 
-			<ul class="nav navbar-right">
-
-				<form method="post">
-					<input id="title" name="title" placeholder=" Name search " />
-					<button class="btn btn-success">Valider</button>
-				</form>
-
-			</ul>
 
 		</div>
 

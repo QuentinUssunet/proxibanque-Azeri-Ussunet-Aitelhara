@@ -106,7 +106,7 @@
 			
 			<br>
 
-			<form action="${chemin}consulter" method="post"
+			<form action="${chemin}retrait.html?idCompte=${compte.id}" method="get"
 				class="form-inline form-group container">
 
 				<label for="idCompte">ID Compte </label> <select
@@ -119,10 +119,10 @@
 					</c:forEach>
 
 				</select>
-
+			
 				<button type="submit" class="btn btn-success">Effecteur un
 					Retrait</button>
-
+			
 			</form>
 
 
