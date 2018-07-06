@@ -173,7 +173,9 @@
 
 
 			<br>
-
+			
+			
+			<!-- A CHANGER POUR UN LIENT PLUTOT QU'UN FORM BOUTON -->
 			<form action="${chemin}virement" method="get"
 				class="form-inline form-group container">
 

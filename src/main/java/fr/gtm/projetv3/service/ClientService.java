@@ -1,5 +1,4 @@
 package fr.gtm.projetv3.service;
-
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +18,6 @@ import fr.gtm.projetv3.model.Compte;
  */
 
 public class ClientService {
-
 	@Autowired
 	ClientRepository repo;
 
@@ -27,12 +25,11 @@ public class ClientService {
 	private ObjectFactory<Results> res;
 	
 	Integer id;
+
 	private Map<Integer,Results> getResult = new HashMap<Integer,Results>(); 
 
-		
 	
 
-	
 	
 	/**
 	 * 
@@ -55,7 +52,6 @@ public class ClientService {
 
 	}
 
-	
 	
 	/**
 	 * 
@@ -92,5 +88,4 @@ public class ClientService {
 		List<Compte> comptes = this.repo.getOne(idClient).getComptes();
 		return comptes;
 	}
-
 }
