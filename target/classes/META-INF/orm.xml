@@ -20,7 +20,7 @@
 			<basic name="dateNaissance" />
 			
 			
-			<one-to-many name="comptes" fetch="EAGER">
+			<one-to-many name="comptes" fetch="LAZY">
 				<join-column name="idClientCol" referenced-column-name="id"/>
 			</one-to-many>
 			

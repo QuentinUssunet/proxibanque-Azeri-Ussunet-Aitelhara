@@ -27,23 +27,11 @@ public class ClientService {
 	ObjectFactory<Results> res;
 
 	Integer id;
-<<<<<<< HEAD
-	Map<Integer, Results> getResult = new HashMap<Integer, Results>();
 
-=======
 	Map<Integer,Results> getResult = new HashMap<Integer,Results>(); 
 		
 	
-	/**
-	 * 
-	 * @param idClient
-	 * @return
-	 */
-	// Affichage des comptes du client
-	public List<Compte> listComptes(Integer idClient){
-		List<Compte> comptes = new ArrayList<Compte>();		
-		return comptes;		
-	}
+
 	
 	
 	/**
@@ -52,7 +40,6 @@ public class ClientService {
 	 * @param prenom
 	 * @return
 	 */
->>>>>>> db1daa90baa9b450545326323a6eaa28f28ee335
 	// Authentification du client par son nom
 	public List<Client> findByEntry(String nom, String prenom) {
 		Results object = this.res.getObject();
@@ -67,9 +54,7 @@ public class ClientService {
 		}
 
 	}
-<<<<<<< HEAD
 
-=======
 	
 	
 	/**
@@ -77,7 +62,6 @@ public class ClientService {
 	 * @param dateNaissance
 	 * @return
 	 */
->>>>>>> db1daa90baa9b450545326323a6eaa28f28ee335
 	// Check dateNaissance + nom/prenom
 	public Client checkDate(LocalDate dateNaissance) {
 		Results object = getResult.get(id);
@@ -97,7 +81,12 @@ public class ClientService {
 		object.setIdClient(idClient);
 		return idClient;
 	}
-
+	
+	/**
+	 * 
+	 * @param idClient
+	 * @return
+	 */
 	// Affichage des comptes du client
 	public List<Compte> listComptes(Integer idClient) {
 		List<Compte> comptes = this.repo.getOne(idClient).getComptes();
