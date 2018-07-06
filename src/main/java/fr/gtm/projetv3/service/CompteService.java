@@ -9,27 +9,28 @@ public class CompteService {
 
 	@Autowired
 	CompteRepository repo;
-	
-	// Trouver un compte 
+
+	// Trouver un compte
 	public Compte findById(Integer idCompte) {
-		return this.repo.getOne(idCompte);		
+		return this.repo.getOne(idCompte);
 	}
-	
-	// Débit compte pour retraits ou virements.
+
+	// Dï¿½bit compte pour retraits ou virements.
 	public Compte debitCompte(Double mt, Integer idCompte) {
 		Double solde = this.findById(idCompte).getSolde();
-		if(mt<solde) {
-			solde-=mt; 
+		if (mt < solde) {
+			solde -= mt;
 		} else {
 			// TODO ExceptionSoldeInsuffisant
 		}
 		return this.repo.saveSolde(solde, idCompte);
 	}
-	
-	// Crédit compte pour virements.
+
+	// Crï¿½dit compte pour virements.
 	public Compte creditCompte(Double mt, Integer idCompte) {
 		Double solde = this.findById(idCompte).getSolde();
-		solde+=mt;
+		solde += mt;
 		return this.repo.saveSolde(solde, idCompte);
 	}
+
 }

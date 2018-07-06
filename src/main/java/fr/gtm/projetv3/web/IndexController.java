@@ -72,7 +72,7 @@ public class IndexController {
 		if(result!=null) {
 			List<Compte> listComtes = this.clientService.listComptes(idClient);
 			final ModelAndView mav = new ModelAndView("accueil");
-			mav.addObject(listComtes);
+			mav.addObject("compte",listComtes);
 			renvoi = mav;
 		} else {
 			// TODO Mauvaise date de naissance merci de recommencer l'authentification.
