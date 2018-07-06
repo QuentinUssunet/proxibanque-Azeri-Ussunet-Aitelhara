@@ -12,6 +12,12 @@ import fr.gtm.projetv3.dao.ClientRepository;
 import fr.gtm.projetv3.model.Client;
 import fr.gtm.projetv3.model.Compte;
 
+/**
+ * 
+ * @author Azeri, Ussunet, Aitelhara
+ *
+ */
+
 public class ClientService {
 
 	@Autowired
@@ -21,8 +27,32 @@ public class ClientService {
 	ObjectFactory<Results> res;
 
 	Integer id;
+<<<<<<< HEAD
 	Map<Integer, Results> getResult = new HashMap<Integer, Results>();
 
+=======
+	Map<Integer,Results> getResult = new HashMap<Integer,Results>(); 
+		
+	
+	/**
+	 * 
+	 * @param idClient
+	 * @return
+	 */
+	// Affichage des comptes du client
+	public List<Compte> listComptes(Integer idClient){
+		List<Compte> comptes = new ArrayList<Compte>();		
+		return comptes;		
+	}
+	
+	
+	/**
+	 * 
+	 * @param nom
+	 * @param prenom
+	 * @return
+	 */
+>>>>>>> db1daa90baa9b450545326323a6eaa28f28ee335
 	// Authentification du client par son nom
 	public List<Client> findByEntry(String nom, String prenom) {
 		Results object = this.res.getObject();
@@ -37,7 +67,17 @@ public class ClientService {
 		}
 
 	}
+<<<<<<< HEAD
 
+=======
+	
+	
+	/**
+	 * 
+	 * @param dateNaissance
+	 * @return
+	 */
+>>>>>>> db1daa90baa9b450545326323a6eaa28f28ee335
 	// Check dateNaissance + nom/prenom
 	public Client checkDate(LocalDate dateNaissance) {
 		Results object = getResult.get(id);
@@ -46,6 +86,11 @@ public class ClientService {
 		return client;
 	}
 
+	/**
+	 * 
+	 * @param dateNaissance
+	 * @return
+	 */
 	public Integer getId(LocalDate dateNaissance) {
 		Results object = getResult.get(id);
 		Integer idClient = object.getIdClient(dateNaissance);

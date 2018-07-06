@@ -8,15 +8,34 @@ import org.springframework.stereotype.Repository;
 
 import fr.gtm.projetv3.model.Client;
 
+/**
+ * 
+ * @author Azeri, Ussunet,Aitelhara
+ * 
+ *         Cette Interface qui communique avec la base de données et qui permet
+ *         de remonter les infos du client sotcker en base
+ *         de données
+ */
+
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Integer> {
 
-	@Query(value = "SELECT * FROM client WHERE nom = ?1", nativeQuery= true)
+	/**
+	 * 
+	 * @param nom
+	 *            Nom du Client
+	 * @return Liste des nom de tous les Clients
+	 */
+	@Query(value = "SELECT * FROM client WHERE nom = ?1", nativeQuery = true)
 	List<Client> getAllByName(String nom);
 
-	@Query(value = "SELECT * FROM client WHERE prenom = ?1", nativeQuery= true)
+	/**
+	 * 
+	 * @param prenom
+	 *            Prénom du Client
+	 * @return Liste de prénom de tous les Clients
+	 */
+	@Query(value = "SELECT * FROM client WHERE prenom = ?1", nativeQuery = true)
 	List<Client> getAllByFirstName(String prenom);
-
-
 
 }

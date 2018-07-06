@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 /**
  * 
- * @author Azeri, Qussunet,Aitelhara
+ * @author Azeri, Ussunet,Aitelhara
  * 
  *         Cette Classe regroupe tous les élements nécessaires qui constitue un
  *         Compte, un Identifiant, Numéro de Compte, libeller, Date d'ouverture
@@ -36,7 +36,7 @@ public class Compte {
 
 	/**
 	 * @param id
-	 *            Idnetifiant de compte en base de données
+	 *            Identifiant de compte en base de données
 	 * @param numCC
 	 *            Numéro de Compte
 	 * @param libeller
