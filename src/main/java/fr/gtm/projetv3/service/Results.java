@@ -28,52 +28,54 @@ public class Results {
 	@Autowired
 	ClientRepository repo;
 
-
-
 	/**
 	 * @param id
 	 * @return
 	 */
-	 // Methode de traitement
-	
-	 public List<String> getResultsById(Integer id) {
-	 List<String> result = new ArrayList<>();
-	 result.add(this.getNom());
-	 result.add(this.getPrenom());
-	 return result;
-	 }
-	
-	 /**
+	// Methode de traitement
+
+	public List<String> getResultsById(Integer id) {
+		
+		List<String> result = new ArrayList<>();
+		result.add(this.getNom());
+		result.add(this.getPrenom());
+		return result;
+	}
+
+	/**
 	 *
 	 * @param dateNaissance
 	 * @return
 	 */
 	public Integer getIdClient(LocalDate dateNaissance) {
-	 List<Client> clients = this.repo.findAll();
-	 Integer idClient = null;
-	 for (int i = 0; i < clients.size(); i++) {
-		 if (clients.get(i).getDateNaissance().equals(dateNaissance)) {
-			 idClient = clients.get(i).getId();
-			 this.setIdClient(idClient);
-		 }
-	 }
-	 return idClient;
-	 }
-	
-	 /**
+
+		List<Client> clients = this.repo.findAll();
+		Integer idClient = null;
+		for (int i = 0; i < clients.size(); i++) {
+			if (clients.get(i).getDateNaissance().equals(dateNaissance)) {
+				idClient = clients.get(i).getId();
+				this.setIdClient(idClient);
+			}
+		}
+		return idClient;
+	}
+
+	/**
 	 *
 	 * @param nom
 	 * @return
 	 */
 
-	public List<Client> searchByName(String nom) {
+	public List<Client> searchByNameAndFirstName(String nom, String prenom) {
+		
 		this.nom = nom;
 		return this.repo.getAllByName(nom);
 	}
 
-	public List<Client> searchByFirstName(String prenom) {
-		this.prenom = prenom;
-		return this.repo.getAllByName(prenom);
+	public List<Client> searchByName(String nom) {
+		LOGGER.info("COMPONENT je search by name");
+		this.nom = nom;
+		return this.repo.getAllByName(nom);
 	}
 
 	/**
@@ -96,75 +98,79 @@ public class Results {
 		return result;
 	}
 
-
-
-
 	// Getters & Setters
-
 
 	/**
 	 * Constructeur par défault
 	 */
-	 public Results() {
-	 }
-	
-	 /**
+	public Results() {
+	}
+
+	/**
 	 *
 	 * @return Id Identifiant Client aprés la Recherche
 	 */
-	 public Integer getId() {
-	 return id;
-	 }
-	
-	 /**
+	public Integer getId() {
+		return id;
+	}
+
+	/**
 	 *
-	 * @param id Id Identifiant Client aprés la Recherche
+	 * @param id
+	 *            Id Identifiant Client aprés la Recherche
 	 */
-	 public void setId(Integer id) {
-	 this.id = id;
-	 }
-	 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	/**
 	 * 
 	 * @return nom Client aprés la Recherche
 	 */
-	 public String getNom() {
-	 return nom;
-	 }
-	
-	 /**
+	public String getNom() {
+		return nom;
+	}
+
+	/**
 	 *
-	 * @param nom Nom client aprés la Recherche
+	 * @param nom
+	 *            Nom client aprés la Recherche
 	 */
-	 public void setNom(String nom) {
-	 this.nom = nom;
-	 }
-	
-	 /**
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	/**
 	 *
 	 * @return Prénom client aprés la Recherche
 	 */
-	 public String getPrenom() {
-	 return prenom;
-	 }
-	
-	 /**
+	public String getPrenom() {
+		return prenom;
+	}
+
+	/**
 	 *
-	 * @param prenom prénom client aprés la Recherche
+	 * @param prenom
+	 *            prénom client aprés la Recherche
 	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	 /**
-	  * 
-	  * @return idClient stock l'id du client pour ne pas avoir a aller le rechercher à chaque étape
-	  */
+
+	/**
+	 * 
+	 * @return idClient stock l'id du client pour ne pas avoir a aller le rechercher
+	 *         à chaque étape
+	 */
 	public Integer getIdClient() {
 		return idClient;
 	}
+
 	/**
 	 * 
-	 * @param idClient permet de set l'id du Client pour ne pas avoir a aller le rechercher à chaque étape
+	 * @param idClient
+	 *            permet de set l'id du Client pour ne pas avoir a aller le
+	 *            rechercher à chaque étape
 	 */
 	public void setIdClient(Integer idClient) {
 		this.idClient = idClient;

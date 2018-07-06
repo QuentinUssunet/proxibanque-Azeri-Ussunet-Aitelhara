@@ -14,6 +14,26 @@
 </head>
 <body>
 
+	
+	<nav class="navbar navbar-inverse navbar-static-top"/>
+
+		<div class="container-fluid">
+
+			<ul class="nav navbar-left">
+
+				
+				<li role="presentation"><a href="<c:url value="/index.html"/>"><span
+						class="glyphicon glyphicon-home" aria-hidden="true"></span>
+						Accueil ProxiBanque</a></li>
+
+			</ul>
+			
+		</div>
+
+	
+
+
+
 	<!-- Banner -->
 	<section id="banner">
 		<h2>Application ProxiBanque</h2>
@@ -21,14 +41,18 @@
 			gestion de Compte</p>
 		<br>
 
+		<div class="alert alert-danger" role="alert">Aucun résultat,
+			veuillez vous adresser à un conseiller</div>
+		<br>
+
 		<form method="post" class="form-inline">
 			<label for="nom">Nom et Prénom </label>
 			<div class="form-group">
-				<input type="text" class="form-control" id="nom-prenom" name="nom-prenom"
-					placeholder="Nom Prénom">
+				<input type="text" class="form-control" id="nom-prenom"
+					name="nom-prenom" placeholder="Nom Prénom" disabled>
 			</div>
 			<div class="form-group">
-				<button type="submit" class="btn btn-success btn-lg">Espace
+				<button type="submit" class="btn btn-success btn-lg" disabled>Espace
 					Client</button>
 			</div>
 		</form>

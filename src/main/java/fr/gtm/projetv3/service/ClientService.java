@@ -27,7 +27,8 @@ public class ClientService {
 
 	Integer id;
 
-	public Map<Integer, Results> getResult = new HashMap<Integer, Results>();
+	private Map<Integer, Results> getResult = new HashMap<Integer, Results>();
+
 
 	/**
 	 * 
@@ -40,12 +41,18 @@ public class ClientService {
 		Results object = this.res.getObject();
 		object.setId(id);
 		getResult.put(id, object);
-		List<Client> c1 = object.searchByName(nom);
-		List<Client> c2 = object.searchByFirstName(prenom);
-		if (c1.isEmpty()) {
-			return c2;
+		if (prenom.isEmpty()) {
+			List<Client> c2 = object.searchByName(nom);
+			if(c2!=null) {
+				return c2;
+			} else {
+				return null;
+			}
 		} else {
-			return c1;
+			List<Client> c1 = object.searchByNameAndFirstName(nom, prenom);
+			if (c1!=null) {
+				return c1;
+			} else return null;
 		}
 
 	}
@@ -75,5 +82,15 @@ public class ClientService {
 		return idClient;
 	}
 
+	/**
+	 * 
+	 * @param idClient
+	 * @return
+	 */
+	// Affichage des comptes du client
+	public List<Compte> listComptes(Integer idClient) {
+		List<Compte> comptes = this.repo.getOne(idClient).getComptes();
+		return comptes;
+	}
 
 }

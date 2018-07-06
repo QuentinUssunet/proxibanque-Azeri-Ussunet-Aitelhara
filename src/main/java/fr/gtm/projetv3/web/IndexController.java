@@ -54,21 +54,28 @@ public class IndexController {
 	@PostMapping("/index")
 	public String authentification(@RequestParam("nom-prenom") String nomprenom) {
 
+
+		
 		String nom = nomprenom.split(" ")[0];
 
 		String prenom = nomprenom.split(" ")[1];
+		
+		
 
 		List<Client> listCli = this.clientService.findByEntry(nom, prenom);
-		if (listCli.size() != 0) {
+		if (listCli.isEmpty()) {
 			// final ModelAndView mav = new ModelAndView("authen");
 			// mav.addObject("searchid", listCli);
-			return "redirect:/authen.html";
+			return "redirect:/erreur.html";
+			
 		} else {
-			// TODO message erreur user inconnu réidentification nécessaire.
-			return null;
+			
+			return "redirect:/authen.html";
 		}
-
+		
 	}
+	
+	
 
 	/**
 	 *
@@ -98,18 +105,22 @@ public class IndexController {
 			mav.addObject("idClient", idClient);
 			renvoi = mav;
 		} else {
-			// TODO Mauvaise date de naissance merci de recommencer l'authentification.
-			// TODO redirect /index
+			final ModelAndView mav = new ModelAndView("erreur");
+			renvoi = mav;
+
 		}
 		return renvoi;
 	}
 
-	// mise a jour adresse
-	@RequestMapping("/editClient")
-	public ModelAndView vueSubmit() {
-		final ModelAndView mav = new ModelAndView("editClient");
+
+	@RequestMapping("/erreur")
+	public ModelAndView badr() {
+		final ModelAndView mav = new ModelAndView("erreur");
 		return mav;
 	}
+	
+	
+
 
 	@GetMapping("/virement")
 	public ModelAndView virement(@RequestParam("id") Integer idClient) {
@@ -135,7 +146,6 @@ public class IndexController {
 		
 		return mav;
 	}
-	
 	
 	
 	
