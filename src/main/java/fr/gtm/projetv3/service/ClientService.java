@@ -1,7 +1,6 @@
 package fr.gtm.projetv3.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,27 +20,18 @@ import fr.gtm.projetv3.model.Compte;
 
 public class ClientService {
 
-	
 	@Autowired
 	ClientRepository repo;
-	
+
 	@Autowired
 	private ObjectFactory<Results> res;
 	
 	Integer id;
 	private Map<Integer,Results> getResult = new HashMap<Integer,Results>(); 
+
 		
 	
-	/**
-	 * 
-	 * @param idClient
-	 * @return
-	 */
-	// Affichage des comptes du client
-	public List<Compte> listComptes(Integer idClient){
-		List<Compte> comptes = new ArrayList<Compte>();		
-		return comptes;		
-	}
+
 	
 	
 	/**
@@ -56,8 +46,15 @@ public class ClientService {
 		object.setId(id);
 		getResult.put(id, object);
 		List<Client> c1 = object.searchByName(nom);
-		return c1;		
+		List<Client> c2 = object.searchByFirstName(prenom);
+		if (c1.isEmpty()) {
+			return c2;
+		} else {
+			return c1;
+		}
+
 	}
+
 	
 	
 	/**
@@ -68,7 +65,7 @@ public class ClientService {
 	// Check dateNaissance + nom/prenom
 	public Client checkDate(LocalDate dateNaissance) {
 		Results object = getResult.get(id);
-		String nom = object.getNom();		
+		String nom = object.getNom();
 		Client client = object.compare(nom, dateNaissance);
 		return client;
 	}
@@ -81,15 +78,19 @@ public class ClientService {
 	public Integer getId(LocalDate dateNaissance) {
 		Results object = getResult.get(id);
 		Integer idClient = object.getIdClient(dateNaissance);
+		object.setIdClient(idClient);
 		return idClient;
 	}
 	
+	/**
+	 * 
+	 * @param idClient
+	 * @return
+	 */
+	// Affichage des comptes du client
+	public List<Compte> listComptes(Integer idClient) {
+		List<Compte> comptes = this.repo.getOne(idClient).getComptes();
+		return comptes;
+	}
 
-		
-		
-		
-		
-		
-		
-		
 }

@@ -23,15 +23,14 @@ public class Results {
 	private Integer id;
 	private String nom;
 	private String prenom;
-	private String chercher;
-	private List<Client> listeRecherche = new ArrayList<>();
-	
+	private Integer idClient;
 
 	@Autowired
 	ClientRepository repo;
 
-	 /**
-	 *
+
+
+	/**
 	 * @param id
 	 * @return
 	 */
@@ -65,36 +64,44 @@ public class Results {
 	 * @param nom
 	 * @return
 	 */
-	 public List<Client> searchByName(String nom) {
-	 this.nom = nom;
-	 return this.repo.getAllByName(nom);
-	 }
-	
-	 public List<Client> searchByFirstName(String prenom) {
-	 this.nom = prenom;
-	 return this.repo.getAllByName(prenom);
-	 }
-	
-	 /**
-	 *
+
+	public List<Client> searchByName(String nom) {
+		this.nom = nom;
+		return this.repo.getAllByName(nom);
+	}
+
+	public List<Client> searchByFirstName(String prenom) {
+		this.prenom = prenom;
+		return this.repo.getAllByName(prenom);
+	}
+
+	/**
+	 * 
 	 * @param nom
 	 * @param dateNaissance
 	 * @return
 	 */
-	 // Methode de comparaison client par nom avec prenom entré
-	 public Client compare(String nom, LocalDate dateNaissance) {
-	 int i;
-	 Client result = null;
-	 List<Client> c1 = this.repo.getAllByName(nom);
-	 for (i = 0; i < c1.size(); i++)
-	 if (c1.get(i).getDateNaissance().equals(dateNaissance)) {
-	 result = c1.get(i);
-	 }
-	 LOGGER.info("compare" + c1.get(0).getPrenom());
-	 return result;
-	 }
-	
-	 /**
+
+	// Methode de comparaison client par nom avec prenom entré
+	public Client compare(String nom, LocalDate dateNaissance) {
+		int i;
+		Client result = null;
+		List<Client> c1 = this.repo.getAllByName(nom);
+		for (i = 0; i < c1.size(); i++)
+			if (c1.get(i).getDateNaissance().equals(dateNaissance)) {
+				result = c1.get(i);
+			}
+		LOGGER.info("compare" + c1.get(0).getPrenom());
+		return result;
+	}
+
+
+
+
+	// Getters & Setters
+
+
+	/**
 	 * Constructeur par défault
 	 */
 	 public Results() {
@@ -144,10 +151,21 @@ public class Results {
 	 *
 	 * @param prenom prénom client aprés la Recherche
 	 */
-	 public void setPrenom(String prenom) {
-	 this.prenom = prenom;
-	 }
-
-	
-	
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	 /**
+	  * 
+	  * @return idClient stock l'id du client pour ne pas avoir a aller le rechercher à chaque étape
+	  */
+	public Integer getIdClient() {
+		return idClient;
+	}
+	/**
+	 * 
+	 * @param idClient permet de set l'id du Client pour ne pas avoir a aller le rechercher à chaque étape
+	 */
+	public void setIdClient(Integer idClient) {
+		this.idClient = idClient;
+	}
 }
