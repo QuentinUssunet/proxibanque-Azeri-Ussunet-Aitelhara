@@ -1,6 +1,7 @@
 package fr.gtm.projetv3.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,7 +28,13 @@ public class CompteService {
 	public Compte findById(Integer idCompte) {
 		return this.repo.getOne(idCompte);
 	}
+	
+	public Optional<Compte> findByCc(Long cc) {
+		return this.repo.getComptesByCc(cc);
+	}
 
+	
+	
 	/**
 	 * 
 	 * @param mt
@@ -35,7 +42,7 @@ public class CompteService {
 	 * @return
 	 */
 	// D�bit compte pour retraits ou virements.
-	public Compte debitCompte(Double mt, Integer idCompte) {
+	public Compte debitCompte(Double mt, Integer idCompte, Integer id) {
 		Double solde = this.findById(idCompte).getSolde();
 		if (mt < solde) {
 			solde -= mt;
@@ -72,5 +79,6 @@ public class CompteService {
 	public List<Compte> listAll() {		
 		return this.repo.findAll();
 	}
+
 
 }

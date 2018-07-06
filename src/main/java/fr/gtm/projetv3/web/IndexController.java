@@ -2,6 +2,7 @@ package fr.gtm.projetv3.web;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,6 +18,7 @@ import fr.gtm.projetv3.model.Compte;
 import fr.gtm.projetv3.service.CarteBleueService;
 import fr.gtm.projetv3.service.ClientService;
 import fr.gtm.projetv3.service.CompteService;
+import fr.gtm.projetv3.service.Results;
 
 /**
  * 
@@ -54,28 +56,21 @@ public class IndexController {
 	@PostMapping("/index")
 	public String authentification(@RequestParam("nom-prenom") String nomprenom) {
 
-
-		
 		String nom = nomprenom.split(" ")[0];
 
 		String prenom = nomprenom.split(" ")[1];
-		
-		
 
 		List<Client> listCli = this.clientService.findByEntry(nom, prenom);
 		if (listCli.isEmpty()) {
 			// final ModelAndView mav = new ModelAndView("authen");
 			// mav.addObject("searchid", listCli);
 			return "redirect:/erreur.html";
-			
+
 		} else {
-			
+
 			return "redirect:/authen.html";
 		}
-		
 	}
-	
-	
 
 	/**
 	 *
@@ -107,46 +102,69 @@ public class IndexController {
 		} else {
 			final ModelAndView mav = new ModelAndView("erreur");
 			renvoi = mav;
-
 		}
 		return renvoi;
 	}
-
 
 	@RequestMapping("/erreur")
 	public ModelAndView badr() {
 		final ModelAndView mav = new ModelAndView("erreur");
 		return mav;
 	}
-	
-	
-
 
 	@GetMapping("/virement")
 	public ModelAndView virement(@RequestParam("id") Integer idClient) {
+		final ModelAndView mav = new ModelAndView("virement");
+
+		List<Compte> listComptesCli = this.compteService.listComptes(idClient);
+		List<Compte> listComtes = this.compteService.listAll();
+
+		mav.addObject("listClient", listComptesCli);
+		mav.addObject("listAllComptes", listComtes);
+
+		return mav;
+	}
+
+	@PostMapping("/virement")
+	public ModelAndView virement(
+			@RequestParam("montantVirement") Double montant,
+			@RequestParam("compteDebiteur") Long cptDebiteur, 
+			@RequestParam("compteCrediteur") Long cptCrediteur,
+			@RequestParam("id") Integer idClient) {
+		
 		final ModelAndView mav = new ModelAndView("virement");
 		
 		List<Compte> listComptesCli = this.compteService.listComptes(idClient);
 		List<Compte> listComtes = this.compteService.listAll();
 		
+		Optional<Compte> wrapDeb = this.compteService.findByCc(cptDebiteur);
+		Optional<Compte> wrapCred = this.compteService.findByCc(cptCrediteur);
+		
+		Compte debiteur = null;
+		Compte crediteur = null;
+		
+		if(wrapDeb.isPresent()) {
+			debiteur = wrapDeb.get();
+		}
+		
+		if(wrapCred.isPresent()) {
+			crediteur = wrapCred.get();
+		}
+		
+		Double sld = crediteur.getSolde();
+		crediteur.setSolde(sld - montant);
+		
+		Double cld = debiteur.getSolde();
+		debiteur.setSolde(cld + montant);
+		
+		// JAI REMIXER LA METHODE AVEC UN ID SUPPLEMENTAIRE MAIS SANS SUCCES
+		this.compteService.debitCompte(montant, crediteur.getId(), idClient);
+		//this.compteService.creditCompte(montant, debiteur.getId());
+		
 		mav.addObject("listClient", listComptesCli);
 		mav.addObject("listAllComptes", listComtes);
+		mav.addObject("msg", "Transfert Effectuer");
+
 		return mav;
 	}
-	
-	@PostMapping("/virement")
-	public ModelAndView virement(@RequestParam("montant") Double montant, 
-			Integer debiteurId, Integer crediteurId) {
-		
-		final ModelAndView mav = new ModelAndView("virement");
-		
-		
-		
-		
-		
-		return mav;
-	}
-	
-	
-	
 }
