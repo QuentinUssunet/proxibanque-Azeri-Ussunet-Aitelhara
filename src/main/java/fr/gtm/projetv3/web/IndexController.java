@@ -113,6 +113,11 @@ public class IndexController {
 		 return mav;
 	 }
 	 
+	 @PostMapping("/editClient")
+	 public ModelAndView modifAdress() {
+		 
+		 
+	 }
 	 
 
 
