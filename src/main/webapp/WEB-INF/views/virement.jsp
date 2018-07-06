@@ -58,77 +58,41 @@
 			<!-- Liste de tous les comptes -->
 
 			<div class="panel panel-default">
-				
 				<div class="panel-body">
 					<span>Liste des comptes</span>
 					<table class="table">
-
 						<thead>
-
 							<tr>
-
 								<th>Id</th>
-
 								<th>Numero de compte</th>
-
 								<th>Type de compte</th>
-
 							</tr>
-
 						</thead>
-
 						<tbody>
-
-							<c:forEach var="compte" items="${listComptes}">
-
+							<c:forEach var="compte" items="${listAllComptes}">
 								<tr>
-
 									<td>${compte.id}</td>
-
 									<td>${compte.numCC}</td>
-
 									<td>${compte.typeCompte}</td>
-
 								</tr>
-
 							</c:forEach>
-
 						</tbody>
-
 					</table>
-
 				</div>
-
 			</div>
-
-
 
 			<br>
 
-
-
 			<div class="container">
-
-
 				<form method="post">
-
-
-
 					<div class="form-group">
-
 						<label for="compteDebiteur">Id compte à débiter</label> <select
 							class="form-control" id="compteDebiteur" name="compteDebiteur">
-
-							<c:forEach var="compte" items="${listeComptes}">
-
+							<c:forEach var="compte" items="${listClient}">
 								<option><c:out value="${compte.numCC}" /></option>
-
 							</c:forEach>
-
 						</select>
-
 					</div>
-
 					<br>
 
 
@@ -138,9 +102,9 @@
 						<label for="compteCrediteur">Id compte à créditer</label> <select
 							class="form-control" id="compteCrediteur" name="compteCrediteur">
 
-							<c:forEach var="Compte" items="${listeCompte}">
+							<c:forEach var="compte" items="${listAllComptes}">
 
-								<option><c:out value="${Compte.numeroDeCompte}" /></option>
+								<option><c:out value="${compte.numCC}" /></option>
 
 							</c:forEach>
 
