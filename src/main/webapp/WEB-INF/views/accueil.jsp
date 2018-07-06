@@ -138,17 +138,17 @@
 
 			</div>
 
-			<c:url value="/" var="chemin" />
+			<!--<c:url value="/" var="chemin" />-->
 
 			<br>
 
-			<form action="${chemin}virement" method="get"
+			<a href="<c:url value="/editClient.html?id="/>" 
 				class="form-inline form-group container">
 
 				<button type="submit" class="btn btn-success">Modifier
 					votre Profil</button>
 
-			</form>
+			</a>
 
 			<br>
 

@@ -18,9 +18,9 @@
 			<basic name="nom" />
 			<basic name="prenom" />
 			<basic name="dateNaissance" />
-			
+
 			<!-- RELATION UNIDIRECTIONNELLE, L'ENTITE REFERENCE N'A PAS D'ATTRIBUT DE CET ENTITE.
-			<one-to-many name="comptes">
+			<one-to-many name="comptes" ">
 				<join-column name="idClientCol" referenced-column-name="id"/>
 			</one-to-many>-->
 			
@@ -35,7 +35,8 @@
 				  L'ATTRIBUT DE <name=""> DANS LA RELATION MANY-TO-ONE DANS L'ENTITE COMPTE.
 			-->
 			
-			<one-to-many name="comptes" mapped-by="client">
+			<!-- POUR NE PAS ETRE EN MODE LEAZY -->
+			<one-to-many name="comptes" mapped-by="client" fetch="EAGER">
 			</one-to-many>
 			
 			
