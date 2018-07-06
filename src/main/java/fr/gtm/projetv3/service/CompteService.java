@@ -32,14 +32,21 @@ public class CompteService {
 	public Optional<Compte> findById(Integer idCompte) {
 		return this.repo.findById(idCompte);
 	}
+	
+	public Optional<Compte> findByCc(Long cc) {
+		return this.repo.getComptesByCc(cc);
+	}
 
+	
+	
 	/**
 	 * 
 	 * @param mt
 	 * @param idCompte
 	 * @return
 	 */
-	// D�bit compte pour retraits ou virements.
+	// D�bit compte pour retraits
+
 	public String debitCompte(Double mt, Integer idCompte) {
 		String result = null;
 		Double solde = null;
@@ -59,9 +66,19 @@ public class CompteService {
 					result = "redirect:/erreur";
 				}
 			}
-
 		}
 		return result;
+	}
+
+			//D�bit compte pour virements
+	public Compte debitCompte2(Double mt, Integer idCompte, Integer id) {
+		Double solde = this.findById(idCompte).get().getSolde();
+		if (mt < solde) {
+			solde -= mt;
+		} else {
+			// TODO ExceptionSoldeInsuffisant
+		}
+		return this.repo.saveSolde(solde, idCompte);
 	}
 
 	/**
@@ -91,5 +108,6 @@ public class CompteService {
 	public List<Compte> listAll() {
 		return this.repo.findAll();
 	}
+
 
 }

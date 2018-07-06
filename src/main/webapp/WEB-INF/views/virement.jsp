@@ -13,7 +13,7 @@
 <script src="<c:url value = "bootstrap/js/bootstrap.min.js"></c:url>"></script>
 </head>
 <body>
-
+	<h1>${msg}</h1>
 	<nav class="navbar navbar-inverse navbar-static-top">
 
 		<div class="container-fluid">
@@ -125,7 +125,6 @@
 
 				</form>
 		</section>
-
 
 		<!-- Section 1  -->
 		<div id="one" class="container-fluid">

@@ -1,6 +1,7 @@
 package fr.gtm.projetv3.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -32,5 +33,7 @@ public interface CompteRepository extends JpaRepository<Compte, Integer> {
 
 	@Query(value="SELECT * FROM `compte` WHERE `clientId` =?1", nativeQuery = true)
 	List<Compte> getComptesByIdClient(Integer idClient);
-
+	
+	@Query(value="SELECT * FROM `compte` WHERE `numCC` =?1", nativeQuery = true)
+	Optional<Compte> getComptesByCc(Long numeroCompte);
 }
